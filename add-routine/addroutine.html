@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add Routine</title>
+</head>
+
+<body>
+        <div class="">
+               
+                <div class="">
+                        <div class="form-group col-6">
+                        <label for="keyword">Name of routine:</label>
+                        <input type="text" class="form-control" id="name-input">
+                        
+                        </div>
+        
+                        <div class="form-group col-6">
+                        <label for="startyear">Main goal:</label>
+                        <input type="text" class="form-control" id="role-input">
+                        </div>
+              </div>
+
+              <div class="card">
+                    <div class="card-header">Type of Exercise</div>
+                    <div class="card-body display-routine">
+                        <div id="template" class="row">
+                           <div class="label col-10 text-center">abss
+                           </div> 
+                           <div class="col-2 text-center">
+                                <input type="text" class="form-control" id="time" placeholder="time/sec">
+                           </div>
+                        </div>
+                    </div>
+              </div>
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-4">
+                            <label for="keyword">Name of Exercise:</label>
+                            <input type="text" class="form-control" id="name-input">
+                            
+                            </div>
+            
+                            <div class="form-group col-3">
+                            <label for="startyear">Break:</label>
+                            <input type="text" class="form-control" id="role-input">
+                            </div>
+
+                            <div class="form-group col-6 text-right">
+                                <button type="button" class="btn btn-secondary" id="add-exercise">Add Exercise</button>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+     <script src="moment.js"></script>
+     <script src="addroutine.js"></script>
+
+
+</body>
+</html>
