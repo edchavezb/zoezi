@@ -9,6 +9,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
+$(".time-display").hide();
 
 var database = firebase.database();
 var rows = 0;
@@ -37,6 +38,7 @@ $("#add-exercise").on("click", function () {
   newExercise.attr("row", rows);
   newExercise.find(".label").text(name);
   $(".display-routine").append(newExercise);
+  $(".time-display").show();
   calculateTotal();
 });
 
@@ -50,6 +52,7 @@ $("#add-break").on("click", function () {
   newBreak.attr("row", rows);
   newBreak.find(".label").text("Break");
   $(".display-routine").append(newBreak);
+  $(".time-display").show();
   calculateTotal();
 });
 

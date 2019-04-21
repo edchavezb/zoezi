@@ -6,12 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="addroutine.css">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/addroutine.css">
   <title>Add Routine</title>
 </head>
 
 <body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Zoezi</a>
+
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active ml-md-3" href="addroutine.html">Create a routine<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Explore routines</a>
+      <a class="nav-item nav-link" href="#">Connect with friends</a>
+    </div>
+
+  </nav>
 
   <div class="container">
     <div class="card mt-3">
@@ -66,7 +79,7 @@
       </div>
     </div>
 
-    <div class="card mb-3">
+    <div class="card mt-2 mb-3">
       <div class="card-header">Exercise list</div>
 
       <div class="card-body">
@@ -97,16 +110,16 @@
 
         </div>
 
-        <div class="row mt-4 mb-4">
+        <div class="row time-display mt-4 mb-4">
           <div class="col-6"></div>
           <div class="col-6 text-right">
-            <span class="cycle-time px-3"> Cycle duration: </span>
+            <span class="cycle-time px-3"> Cycle length: </span>
             <span class="total-time pl-3 pr-5"> Total duration: </span>
           </div>
-        </div> <hr><br>
+        </div><br>
 
         <div class="form-row ml-4">
-          <label for="name-input">Name of Exercise:</label>
+          <label for="name-input">Name of exercise:</label>
         </div>
         <div class="form-row ml-3">
 
@@ -134,9 +147,10 @@
 
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-  <script src="addroutine.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script src="scripts/addroutine.js"></script>
 
 </body>
 </html>
