@@ -1,0 +1,14 @@
+.form-control-inline {
+    min-width: 0;
+    width: auto;
+    display: inline;
+}
+
+.cycles {
+    width: 50px;
+    display: inline;
+}
+
+.zoebtn{
+    width: 38px;
+}
