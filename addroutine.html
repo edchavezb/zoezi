@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/addroutine.css">
+  <title>Add Routine</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Zoezi</a>
+
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active ml-md-3" href="addroutine.html">Create a routine<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Explore routines</a>
+      <a class="nav-item nav-link" href="#">Connect with friends</a>
+    </div>
+
+  </nav>
+
+  <div class="container">
+    <div class="card mt-3">
+      <div class="card-header">Routine settings</div>
+      <div class="card-body">
+        <div class="row mt-2">
+          <div class="col-6">
+            <div class="row ml-3">
+              <div class="form-group col-12">
+                <label for="routine-input">Name of routine:</label>
+                <input type="text" class="form-control" id="routine-input">
+              </div>
+            </div>
+            <div class="row ml-3">
+              <div class="form-group col-6">
+                <label for="goal-input">Main goal:</label>
+                <input type="text" class="form-control" id="goal-input">
+              </div>
+              <div class="form-group col-6">
+                <label for="goal-input">Target muscle:</label>
+                <input type="text" class="form-control" id="target-input">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="form-group text-center">
+                  <label for="keyword">Week days:</label>
+                  <button type="button" class="btn btn-secondary zoebtn ml-2" id="monday">M</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="tuesday">T</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="wednesday">W</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="thursday">T</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="friday">F</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="saturday">S</button>
+                  <button type="button" class="btn btn-secondary zoebtn" id="sunday">S</button>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="form-group text-center">
+                  <label for="keyword">Number of cycles:</label>
+                  <button type="button" class="btn btn-secondary zoebtn ml-2" id="add-cycle">+</button>
+                  <input type="text" class="cycles form-control" id="time" value="1">
+                  <button type="button" class="btn btn-danger zoebtn" id="remove-cycle">-</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-2 mb-3">
+      <div class="card-header">Exercise list</div>
+
+      <div class="card-body">
+
+        <div class="row">
+
+          <div class="col-12 display-routine">
+
+            <div id="template" class="d-none row">
+              <div class="label col-9 text-center">Template
+              </div>
+
+              <div class="col-3 text-center">
+                <div class="row no-gutters">
+                  <div class="col-6">
+                    <input type="text" class="seconds form-control" id="time" value="30 sec">
+                  </div>
+
+                  <div class="col-6 text-left">
+                    <button type="button" class="btn btn-secondary zoebtn ml-2" id="add-time">+</button>
+                    <button type="button" class="btn btn-danger zoebtn" id="subtract-time">-</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row time-display mt-4 mb-4">
+          <div class="col-6"></div>
+          <div class="col-6 text-right">
+            <span class="cycle-time px-3"> Cycle length: </span>
+            <span class="total-time pl-3 pr-5"> Total duration: </span>
+          </div>
+        </div><br>
+
+        <div class="form-row ml-4">
+          <label for="name-input">Name of exercise:</label>
+        </div>
+        <div class="form-row ml-3">
+
+          <div class="form-group col-9">
+            <input type="text" class="form-control" id="name-input">
+          </div>
+
+          <div class="form-group col-3">
+            <button class="btn btn-secondary" id="add-exercise" type="submit">Add Exercise</button>
+            <button class="btn btn-secondary" id="add-break">Add Break</button>
+          </div>
+
+        </div>
+
+        <div class="form-row ml-3 mt-3">
+          <div class="col-12 text-center">
+            <button class="btn btn-secondary" id="save-routine">Save routine</button>
+            <button class="btn btn-secondary" id="discard">Discard changes</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script src="scripts/addroutine.js"></script>
+
+</body>
+</html>
