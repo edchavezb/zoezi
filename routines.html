@@ -15,7 +15,7 @@
 
 <body>
 
-  <button class="launch-routine">Launch routine</button>
+  <button class="launch-routine" data="Z-1">Launch routine</button>
 
   <div class="modal" id="routine-player">
 
@@ -39,7 +39,7 @@
             <div class="col-6">
               <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <h3>Exercise name</h3>
+                    <h3 class="ExeName">Exercise name</h3>
                     <div class="big-display rounded-circle text-center mt-4"> 
                       <div class="time-left"></div>
                     </div>
@@ -62,7 +62,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="start-routine">Start</button>
+        <button class="pause-routine">Pause</button>
+        <button class="start-routine" data-routine="Z-1">Start</button>
       </div>
     </div>
 
