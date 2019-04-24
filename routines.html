@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/routines.css">
+  <title>Zoezi: Routines</title>
+</head>
+
+<body>
+
+  <button class="launch-routine">Launch routine</button>
+
+  <div class="modal" id="routine-player">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Routine title</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row no-gutters">
+            
+            <div class="col-6">
+              <div class="row text-center mt-4">
+                <div class="col-12">
+                  <img class="z-image" src="images/deadlift.jpg">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <h3>Exercise name</h3>
+                    <div class="big-display rounded-circle text-center mt-4"> 
+                      <div class="time-left"></div>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-right">
+                <h4 class="mr-4">Total: <span class="global"></span></h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center">
+                <h2 class="finish"></h2>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="start-routine">Start</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+<script src="scripts/routineplayer.js"></script>
+
+</html>
