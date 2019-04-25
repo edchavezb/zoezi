@@ -1,4 +1,3 @@
-
 body {
     background: #4b4b4b;
 }
@@ -43,4 +42,18 @@ cursor: pointer;
 .time-left{
     line-height: 200px;
     vertical-align: middle;
+}
+
+.card { 
+    text-align: center; 
+    position: relative;  
+    color: #222  
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #fff; padding: 6px 8px; background-color: #63B76C;
 }
