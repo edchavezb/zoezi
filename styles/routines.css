@@ -1,14 +1,14 @@
-
 body {
-    background: #ffffff;
+    background: #4b4b4b;
 }
-  
+
 .modal-content {
-background-color: #E9ECEF;;
+background-color: #E9ECEF;
 margin: 15% auto; /* 15% from the top and centered */
 padding: 20px;
 border: 1px solid #888;
 width: 60%; /* Could be more or less, depending on screen size */
+top: -150px !important;
 }
   
 .close {
@@ -42,4 +42,18 @@ cursor: pointer;
 .time-left{
     line-height: 200px;
     vertical-align: middle;
+}
+
+.card { 
+    text-align: center; 
+    position: relative;  
+    color: #222  
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #fff; padding: 6px 8px; background-color: #63B76C;
 }

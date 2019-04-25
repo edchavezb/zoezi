@@ -12,25 +12,3 @@
 .zoebtn{
     width: 38px !important;
 }
-
-.card{
-    border: none;
-}
-
-.card-header{
-    background: #201E50;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.card-body{  
-    background: #F8F9FA;
-}
-
-.navbar-brand{
-    font-weight: bold;
-}
-
-body {
-    background: #4b4b4b;
-}
