@@ -9,16 +9,15 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/routines.css">
   <title>Zoezi: Routines</title>
 </head>
 
 <body>
 
-  <button class="launch-routine" data="Z-1">Launch routine</button>
 
   <div class="modal" id="routine-player">
-
     <div class="modal-content">
       <div class="modal-header">
         <h2>Routine title</h2>
@@ -68,6 +67,36 @@
     </div>
 
   </div>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Zoezi</a>
+
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active ml-md-3" href="addroutine.html">My Profile<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Create routine</a>
+      <a class="nav-item nav-link" href="#">Explore routines</a>
+    </div>
+
+  </nav>
+
+  <div class="container">
+    <div class="card mt-3">
+      <div class="card-header">Explore routines</div>
+      <div class="card-body">
+        <div class="title">
+          <h3>My routines</h3>
+        </div>
+        <div class="title">
+          <h3>Routines assigned to me</h3>
+        </div>
+        <div class="title">
+          <h3>Popular routines</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="launch-routine">Launch routine</button>
 
 </body>
 
