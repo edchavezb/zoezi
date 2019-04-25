@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
-  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/layout.css">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/routines.css">
+  <link rel="stylesheet" href="styles/layout.css">
   <title>Zoezi: Routines</title>
 </head>
 
@@ -27,7 +27,7 @@
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row no-gutters">
-            
+
             <div class="col-6">
               <div class="row text-center mt-4">
                 <div class="col-12">
@@ -39,23 +39,23 @@
             <div class="col-6">
               <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <h3 class="ExeName">Exercise name</h3>
-                    <div class="big-display rounded-circle text-center mt-4"> 
-                      <div class="time-left"></div>
-                    </div>
+                  <h3 class="ExeName">Exercise name</h3>
+                  <div class="big-display rounded-circle text-center mt-4">
+                    <div class="time-left"></div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 text-right">
-                <h4 class="mr-4">Total: <span class="global"></span></h4>
+                  <h4 class="mr-4">Total: <span class="global"></span></h4>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 text-center">
-                <h2 class="finish"></h2>
+                  <h2 class="finish"></h2>
                 </div>
               </div>
-              
+
             </div>
 
           </div>
@@ -74,102 +74,94 @@
     <a class="navbar-brand" href="index.html">Zoezi</a>
 
     <div class="navbar-nav">
-      <a class="nav-item nav-link active ml-md-3" href="addroutine.html">My Profile<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Create routine</a>
-      <a class="nav-item nav-link" href="#">Explore routines</a>
+      <a class="nav-item nav-link active ml-md-3" href="routines.html">My Profile<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="addroutine.html">Create routine</a>
+      <a class="nav-item nav-link" href="explore.html">Explore routines</a>
     </div>
 
   </nav>
 
   <div class="container">
-    <div class="card mt-3">
-      <div class="card-header">Explore routines</div>
-      <div class="card-body">
+    <div class="card ui mt-3">
+      <div class="card-header ui">Explore routines</div>
+      <div class="card-body ui px-5">
         <div class="title">
           <h3>My routines</h3>
-          <br></br>
-              <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-2">
-              <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">Name of Routine</div>
-                <div class="card-body">
-                  <div id="Created by:">Created by:</div>
-                  <div id="Duration:">Duration:</div>            
-                  <div class="more">
-                      <a href="#" title="Title Link">
-                        Go <i class="fa fa-angle-double-right"></i>
-                      </a>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="col-sm-2">
-            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-3">
+            <div class="card routinecard text-white bg-info mb-3" style="max-width: 18rem;">
               <div class="card-header">Name of Routine</div>
               <div class="card-body">
-                  <div id="Created by:">Created by:</div>
-                  <div id="Duration:">Duration:</div>   
+                <div id="Created by:">Created by:</div>
+                <div id="Duration:">Duration:</div>
                 <div class="more">
-                    <a href="#" title="Title Link">
-                        Go <i class="fa fa-angle-double-right"></i>
-                    </a>
+                  <div class="launch-routine" data="Z-1">
+                    Go <i class="fa fa-angle-double-right"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
-            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+          <div class="col-3">
+            <div class="card routinecard text-white bg-danger mb-3" style="max-width: 18rem;">
               <div class="card-header">Name of Routine</div>
               <div class="card-body">
-                  <div id="Created by:">Created by:</div>
-                  <div id="Duration:">Duration:</div>   
+                <div id="Created by:">Created by:</div>
+                <div id="Duration:">Duration:</div>
                 <div class="more">
-                    <a href="#" title="Title Link">
-                        Go<i class="fa fa-angle-double-right"></i>
-                    </a>
+                  <div class="launch-routine" data="Z-2">
+                    Go <i class="fa fa-angle-double-right"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
-              <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-                <div class="card-header">Name of Routine</div>
-                <div class="card-body">
-                    <div id="Created by:">Created by:</div>
-                    <div id="Duration:">Duration:</div>   
-                  <div class="more">
-                      <a href="#" title="Title Link">
-                          Go <i class="fa fa-angle-double-right"></i>
-                      </a>
+          <div class="col-3">
+            <div class="card routinecard text-white bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header">Name of Routine</div>
+              <div class="card-body">
+                <div id="Created by:">Created by:</div>
+                <div id="Duration:">Duration:</div>
+                <div class="more">
+                  <div class="launch-routine" data="Z-3">
+                    Go <i class="fa fa-angle-double-right"></i>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
-          <div class="col-sm-2"></div>
-      </div>
-
-
-
-
+          <div class="col-3">
+            <div class="card routinecard text-white bg-warning mb-3" style="max-width: 18rem;">
+              <div class="card-header">Name of Routine</div>
+              <div class="card-body">
+                <div id="Created by:">Created by:</div>
+                <div id="Duration:">Duration:</div>
+                <div class="more">
+                  <div class="launch-routine" data="Z-4">
+                    Go <i class="fa fa-angle-double-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <button class="launch-routine">Launch routine</button>
-
 </body>
 
-
-</body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 <script src="scripts/routineplayer.js"></script>
 

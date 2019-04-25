@@ -44,16 +44,17 @@ cursor: pointer;
     vertical-align: middle;
 }
 
-.card { 
+.routinecard{ 
     text-align: center; 
     position: relative;  
     color: #222  
 }
 
-a {
+.launch-routine {
     color: black;
+    cursor: pointer;
 }
 
-a:hover {
-    color: #fff; padding: 6px 8px; background-color: #63B76C;
+.launch-routine:hover {
+    color: #fff; background-color: #63B76C;
 }

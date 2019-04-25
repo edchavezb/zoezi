@@ -1,14 +1,14 @@
-.card{
+.card.ui{
     border: none;
 }
 
-.card-header{
+.card-header.ui{
     background: #201E50;
     color: #ffffff;
     font-weight: bold;
 }
 
-.card-body{  
+.card-body.ui{  
     background: #F8F9FA;
 }
 
