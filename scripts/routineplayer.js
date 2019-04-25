@@ -52,26 +52,48 @@ function countDown() {
 
 function startExercise(){
   timerTime = chosenTimers[currentTimer];
-  console.log(chosenTimers);
+  console.log(exerciseName[currentTimer]);
   $(".time-left").html(timerTime);
   $(".ExeName").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
+
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q=exercise+"+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+      }).then(function(response) {
+          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
+  });
 }
 
-$(".launch-routine").on("click", function (){
-  
+$(document.body).on("click", ".launch-routine", function() {
   $(".start-routine").text("Start");
   $(".start-routine").attr("data-routine", $(this).attr("data"));
   $("#routine-player").modal("show");
+  running = true;
+  currentTimer = 0;
+  timerTime = chosenTimers[currentTimer];
+  globalTime = 0;
+  clearInterval(exerciseTimer);
+  clearInterval(global);
+  $(".time-left").html("00");
+  $(".global").html("00:00");
+  $(".z-image").attr("src","images/deadlift.jpg")
 
+  routineSelect = $(this).attr("data");
+  database.ref("/routines").once('value').then(function(snapshot){
+    $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
+    $(".ExeName").text("Get Set!");
+  });
 
 });
+
 $(document.body).on("click", ".start-routine", function() {
   $(".start-routine").text("Re-Start");
   $(".finish").text("");
   running = true;
   currentTimer = 0;
-  timerTime = chosenTimers[currentTimer]
+  timerTime = chosenTimers[currentTimer];
   globalTime = 0;
   clearInterval(exerciseTimer);
   clearInterval(global);
