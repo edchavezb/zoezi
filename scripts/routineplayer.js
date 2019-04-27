@@ -83,6 +83,7 @@ $(document.body).on("click", ".launch-routine", function() {
   routineSelect = $(this).attr("data");
   database.ref("/routines").once('value').then(function(snapshot){
     $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
+
     $(".ExeName").text("Get Set!");
   });
 
@@ -151,4 +152,34 @@ function timeConverter(t) {
   }
 
   return minutes + ":" + seconds;
-}
+};
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+
+    // ...
+  } else {
+    
+    location.href = "index.html";
+    consol.log("User is signed out");
+    // ...
+  }
+});
+
+$(document.body).on("click", "#log-out", function() {
+
+  console.log("log out")
+  firebase.auth().signOut()
+  //   // Handle Errors here.
+  //   var errorCode = error.code;
+  //   var errorMessage = error.message;
+  //   // ...
+    
+  //   alert(errorCode +"message :"+ errorMessage);
+  // });
+
+      location.href = "index.html"
+
+
+});

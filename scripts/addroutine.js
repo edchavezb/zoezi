@@ -67,7 +67,7 @@ $(document).on("click", "#add-time", function () {
 });
 
 $(document).on("click", "#subtract-time", function () {
-  var thisRow = $(this).closest(".new-exercise");
+  var thisRow = $(this).closest(".n ew-exercise");
   var timeAttr = parseInt(thisRow.attr("time"));
   var newTime = timeAttr - 10;
   thisRow.attr("time", newTime)
