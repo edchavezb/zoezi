@@ -1,0 +1,47 @@
+.login-block{
+background: rgb(108, 146, 144);  
+width:100%;
+padding : 100px;
+}
+
+.img {
+  background-size:cover; 
+  min-height:570px;
+  margin-left: 15px;
+} 
+
+.container {
+    background:#fff; 
+    box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+}
+
+.login-sec{
+    padding: 50px 30px; 
+    position:relative;
+}
+
+.login-sec h2{
+    margin-bottom:30px; 
+    font-weight:800; 
+    font-size:30px; 
+    color: rgb(78, 168, 196);
+}
+
+.login-sec h2:after{
+    content:" "; 
+    width:100px; 
+    height:5px; 
+    background:rgb(108, 155, 86); 
+    display:block; 
+    margin-top:20px; 
+    border-radius:3px; 
+    margin-left:auto;
+    margin-right:auto
+}
+.btn-login{
+    background: rgb(78, 168, 196); 
+    color:#fff; 
+    font-weight:600;
+}
+
+
