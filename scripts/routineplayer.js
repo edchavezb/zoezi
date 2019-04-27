@@ -83,6 +83,7 @@ $(document.body).on("click", ".launch-routine", function() {
   routineSelect = $(this).attr("data");
   database.ref("/routines").once('value').then(function(snapshot){
     $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
+
     $(".ExeName").text("Get Set!");
   });
 
