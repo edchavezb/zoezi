@@ -9,7 +9,7 @@ padding : 100px;
 body, html{
 background-position: center;
 background-size: cover;
-
+font-family: sans-serif;
 }
 
 .img {
@@ -52,5 +52,6 @@ background-size: cover;
     color:#fff; 
     font-weight:600;
 }
+
 
 
