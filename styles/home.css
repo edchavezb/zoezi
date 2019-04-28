@@ -1,12 +1,20 @@
 .login-block{
-background: rgb(108, 146, 144);  
+/* background: rgb(108, 146, 144);   */
+background-repeat: no-repeat;
+height: 100%; 
 width:100%;
 padding : 100px;
 }
 
+body, html{
+background-position: center;
+background-size: cover;
+
+}
+
 .img {
-  background-size:cover; 
-  min-height:570px;
+  background-size: cover; 
+  min-height:770px;
   margin-left: 15px;
 } 
 
@@ -24,14 +32,15 @@ padding : 100px;
     margin-bottom:30px; 
     font-weight:800; 
     font-size:30px; 
-    color: rgb(78, 168, 196);
+    color: rgb(151, 183, 189);
 }
 
 .login-sec h2:after{
     content:" "; 
     width:100px; 
     height:5px; 
-    background:rgb(108, 155, 86); 
+  
+    background: #decac3;
     display:block; 
     margin-top:20px; 
     border-radius:3px; 
@@ -39,7 +48,7 @@ padding : 100px;
     margin-right:auto
 }
 .btn-login{
-    background: rgb(78, 168, 196); 
+    background: rgb(151, 183, 189); 
     color:#fff; 
     font-weight:600;
 }
