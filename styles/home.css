@@ -10,6 +10,7 @@ body, html{
 background-position: center;
 background-size: cover;
 font-family: sans-serif;
+zoom: 85%;
 }
 
 .img {
