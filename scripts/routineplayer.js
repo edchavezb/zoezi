@@ -57,14 +57,14 @@ function startExercise(){
   $(".ExeName").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q=exercise+"+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
   $.ajax({
       url: queryURL,
       method: "GET"
       }).then(function(response) {
           $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
   });
-}
+};
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".start-routine").text("Start");
