@@ -64,7 +64,7 @@ function startExercise(){
       }).then(function(response) {
           $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
   });
-}
+};
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".start-routine").text("Start");
