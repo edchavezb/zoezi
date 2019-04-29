@@ -11,12 +11,12 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-$(document.body).on("click", "#sign-up", function() {
-
+$(document.body).on("click", "#sign-up", function(e) {
+  
+  e.preventDefault()
   console.log("botton sign in.")
-  var email = $("#role-input").val();
-  var password = $("#name-input").val();
-  var name = $("#role-input").val();
+  var email = $("#email-input").val();
+  var password = $("#password-input").val();
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
@@ -29,11 +29,14 @@ $(document.body).on("click", "#sign-up", function() {
 
   });
 });
-$(document.body).on("click", "#log-in", function() {
+$(document.body).on("click", "#log-in", function(e) {
+  
+  e.preventDefault()
+  console.log("log in click")
+  var email = $("#email-input").val();
+  var password = $("#password-input").val();
 
-  var email = $("#role-input").val();
-  var password = $("#name-input").val();
-  var name = $("#role-input").val();
+  console.log(email, password)
 
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
@@ -48,8 +51,8 @@ $(document.body).on("click", "#log-in", function() {
 
 });
 
-$(document.body).on("click", "#log-out", function() {
-
+$(document.body).on("click", "#log-out", function(e) {
+  e.preventDefault()
   console.log("log out")
   firebase.auth().signOut()
   //   // Handle Errors here.
@@ -85,7 +88,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     console.log(email, uid);
 
-    // location.href = "routines.html"
+    location.href = "routines.html"
     // ...
   } else {
     // User is signed out.
