@@ -1,30 +1,107 @@
-var chosenTimers = [10, 20, 10, 20]
+var config = {
+  apiKey: "AIzaSyC-ZLRM_MXbFLVFfHBN0XViz_46CHTmUMU",
+  authDomain: "zoezi-74ea6.firebaseapp.com",
+  databaseURL: "https://zoezi-74ea6.firebaseio.com",
+  projectId: "zoezi-74ea6",
+  storageBucket: "zoezi-74ea6.appspot.com",
+  messagingSenderId: "413250730618"
+};
 
-function countDown() {
-  timeLeft--;
-  $(".time-left").html(timeLeft);
-  if (timeLeft === 0) {
-    stop();
-    alert("Time's Up!");
-    $(".answer").off("click");
+firebase.initializeApp(config);
+var database = firebase.database();
+
+
+$(document.body).on("click", "#sign-up", function(e) {
+  
+  e.preventDefault()
+  console.log("botton sign in.")
+  var email = $("#email-input").val();
+  var password = $("#password-input").val();
+
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+
+
+  alert(errorCode +"message :"+ errorMessage);
+
+
+  });
+});
+$(document.body).on("click", "#log-in", function(e) {
+  
+  e.preventDefault()
+  console.log("log in click")
+  var email = $("#email-input").val();
+  var password = $("#password-input").val();
+
+  console.log(email, password)
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+    
+    alert(errorCode +"message :"+ errorMessage);
+  });
+  
+
+
+});
+
+$(document.body).on("click", "#log-out", function(e) {
+  e.preventDefault()
+  console.log("log out")
+  firebase.auth().signOut()
+  //   // Handle Errors here.
+  //   var errorCode = error.code;
+  //   var errorMessage = error.message;
+  //   // ...
+    
+  //   alert(errorCode +"message :"+ errorMessage);
+  // });
+
+      location.href = "index.html"
+
+
+});
+
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    email = user.email;
+    // var emailVerified = user.emailVerified;
+    // var photoURL = user.photoURL;
+    // var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    // var providerData = user.providerData;
+
+    database.ref("/Users/"+uid).set({
+      dbEmail: email,
+      dbname: displayName
+    });
+
+    console.log(email, uid);
+
+    location.href = "routines.html"
+    // ...
+  } else {
+    // User is signed out.
+    // ...
   }
-}
+});
 
-function stop() {
-  clearInterval(myTime);
-  timeRunning = false;
-}
 
-var currentTimer = 0; //index array
-var timerTime = chosenTimers[currentTimer]
-var exerciseTime = 0;
 
-function exerciseStart(){
-  myTime = setInterval(countDown, 1000);
-  exerciseTime++
-  timeRunning = true;
-}
 
-currentTimer++
+$(document.body).on("click", "#routines", function() {
 
-exerciseStart();
+  location.href = "routines.html"
+
+});
+

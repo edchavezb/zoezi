@@ -9,6 +9,16 @@ var config = {
 };
 
 firebase.initializeApp(config);
+
+var user = firebase.auth().currentUser;
+var email, uid, emailVerified;
+
+if (user != null) {
+  email = user.email;
+  emailVerified = user.emailVerified;
+  uid = user.uid;
+}
+
 $(".time-display").hide();
 
 var database = firebase.database();
@@ -121,6 +131,14 @@ $("#save-routine").on("click", function () {
     exercises: routineArray,
   });
   database.ref().update({routineCount: updatedCount});
+
+  database.ref("/Users/"+firebase.auth().currentUser.uid+"/routines").once('value').then(function(snapshot){
+    UroutinesCount = snapshot.numChildren();
+
+    database.ref("/Users/"+firebase.auth().currentUser.uid+"/routines").child(UroutinesCount).set(routineId)
+
+  });
+
 });
 
 $("#discard").on("click", function () {

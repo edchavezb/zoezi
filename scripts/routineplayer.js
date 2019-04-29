@@ -57,14 +57,14 @@ function startExercise(){
   $(".ExeName").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q=exercise+"+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
   $.ajax({
       url: queryURL,
       method: "GET"
       }).then(function(response) {
           $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
   });
-}
+};
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".start-routine").text("Start");
@@ -83,6 +83,7 @@ $(document.body).on("click", ".launch-routine", function() {
   routineSelect = $(this).attr("data");
   database.ref("/routines").once('value').then(function(snapshot){
     $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
+
     $(".ExeName").text("Get Set!");
   });
 
@@ -151,4 +152,34 @@ function timeConverter(t) {
   }
 
   return minutes + ":" + seconds;
-}
+};
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+
+    // ...
+  } else {
+    
+    location.href = "index.html";
+    consol.log("User is signed out");
+    // ...
+  }
+});
+
+$(document.body).on("click", "#log-out", function() {
+
+  console.log("log out")
+  firebase.auth().signOut()
+  //   // Handle Errors here.
+  //   var errorCode = error.code;
+  //   var errorMessage = error.message;
+  //   // ...
+    
+  //   alert(errorCode +"message :"+ errorMessage);
+  // });
+
+      location.href = "index.html"
+
+
+});
