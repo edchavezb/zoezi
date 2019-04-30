@@ -9,7 +9,7 @@ var config = {
 
 firebase.initializeApp(config);
 var database = firebase.database();
-
+var routines = "[]";
 
 $(document.body).on("click", "#sign-up", function(e) {
   
@@ -18,16 +18,14 @@ $(document.body).on("click", "#sign-up", function(e) {
   var email = $("#email-input").val();
   var password = $("#password-input").val();
 
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-
-
-  alert(errorCode +"message :"+ errorMessage);
-
-
+  $(".alert-message").text(errorMessage);
   });
+
+
 });
 $(document.body).on("click", "#log-in", function(e) {
   
@@ -44,7 +42,7 @@ $(document.body).on("click", "#log-in", function(e) {
     var errorMessage = error.message;
     // ...
     
-    alert(errorCode +"message :"+ errorMessage);
+  $(".alert-message").text(errorMessage);
   });
   
 
@@ -55,17 +53,8 @@ $(document.body).on("click", "#log-out", function(e) {
   e.preventDefault()
   console.log("log out")
   firebase.auth().signOut()
-  //   // Handle Errors here.
-  //   var errorCode = error.code;
-  //   var errorMessage = error.message;
-  //   // ...
-    
-  //   alert(errorCode +"message :"+ errorMessage);
-  // });
 
-      location.href = "index.html"
-
-
+  location.href = "index.html"
 });
 
 
@@ -81,12 +70,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     var uid = user.uid;
     // var providerData = user.providerData;
 
-    database.ref("/Users/"+uid).set({
-      dbEmail: email,
-      dbname: displayName
-    });
+
 
     console.log(email, uid);
+
+    database.ref("/Users/"+uid).child("userInfo").set({
+    dbEmail: email,
+    dbname: displayName,
+    });
 
     location.href = "routines.html"
     // ...
@@ -97,11 +88,4 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-
-
-$(document.body).on("click", "#routines", function() {
-
-  location.href = "routines.html"
-
-});
 
