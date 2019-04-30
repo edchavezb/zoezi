@@ -25,6 +25,7 @@ var database = firebase.database();
 var rows = 0;
 var cycles = 1;
 var currentCount = 0;
+var uRoutinesArr = [];
 
 function calculateTotal() {
   var cycleTime = 0;
@@ -132,14 +133,29 @@ $("#save-routine").on("click", function () {
   });
   database.ref().update({routineCount: updatedCount});
 
-  database.ref("/Users/"+firebase.auth().currentUser.uid+"/routines").once('value').then(function(snapshot){
-    UroutinesCount = snapshot.numChildren();
+  database.ref("/Users/"+firebase.auth().currentUser.uid).once('value').then(function(snapshot){
+    console.log(snapshot.child("userRoutines").val());
+    console.log(snapshot.val());
 
-    database.ref("/Users/"+firebase.auth().currentUser.uid+"/routines").child(UroutinesCount).set(routineId)
+    if (snapshot.child("userRoutines").exists()) {
+      uRoutinesArr = JSON.parse(snapshot.child("userRoutines").val());
+    }
+    else {
+      database.ref("/Users/"+firebase.auth().currentUser.uid).child("userRoutines");
+    }
 
+    console.log(uRoutinesArr)
+    uRoutinesArr.push(routineId)
+
+
+    // database.ref("/Users/"+firebase.auth().currentUser.uid).set({
+    //   routines : UroutinsArr
+    // })
+    database.ref("/Users/"+firebase.auth().currentUser.uid).update({userRoutines : JSON.stringify(uRoutinesArr)});
   });
 
 });
+
 
 $("#discard").on("click", function () {
 
