@@ -3,7 +3,8 @@
 }
 
 .card-header.ui{
-    background: #201E50;
+    /* background: rgb(160, 181, 187); */
+    background: rgb(90, 113, 125);
     color: #ffffff;
     font-weight: bold;
 }
@@ -17,5 +18,20 @@
 }
 
 body {
-    background: #4b4b4b;
+    background: #666565;
+    font-family: sans-serif;
 }
+
+
+#save-routine, #discard, #add-exercise, #add-break  {
+    background: rgb(90, 113, 125);
+    /* background: rgb(160, 181, 187); */
+}
+
+.btn {
+    background: rgb(90, 113, 125);
+}
+
+
+
+
