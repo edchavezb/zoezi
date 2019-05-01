@@ -9,14 +9,14 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="libraries/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="libraries/owlcarousel/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="styles/routines.css">
   <link rel="stylesheet" href="styles/layout.css">
   <title>Zoezi: Routines</title>
 </head>
 
 <body>
-
-
 
   <div class="modal" id="routine-player">
     <div class="modal-content">
@@ -37,17 +37,17 @@
             </div>
 
             <div class="col-6">
-              <div class="row mt-3">
+              <div class="row mt-2">
                 <div class="col-12 text-center">
-                  <h3 class="ExeName">Exercise name</h3>
-                  <div class="big-display rounded-circle text-center mt-4">
+                  <h3 class="exercise-name">Ready!</h3>
+                  <div class="big-display rounded-circle text-center mt-3">
                     <div class="time-left"></div>
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row mt-3">
                 <div class="col-12 text-right">
-                  <h4 class="mr-4">Total: <span class="global"></span></h4>
+                  <h4 class="mr-2">Total: <span class="global"></span></h4>
                 </div>
               </div>
               <div class="row">
@@ -74,101 +74,60 @@
     <a class="navbar-brand" href="index.html">Zoezi</a>
 
     <div class="navbar-nav">
-      <a class="nav-item nav-link active ml-md-3" href="routines.html">My Profile<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active ml-md-3" href="routines.html">My profile<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="addroutine.html">Create routine</a>
-      <a class="nav-item nav-link" href="explore.html">Explore routines</a>
+      <a class="nav-item nav-link disabled" href="explore.html">Explore routines</a>
+    </div>
+
+    <div class="navbar-nav ml-auto">
+      <div class="dropdown">
+        <span class="dropdown-toggle user text-white" data-toggle="dropdown">User</span>
+        <ul class="dropdown-menu dropdown-menu-right mt-2 px-3 py-2">
+          <li id="log-out">Log out</li>
+        </ul>
+      </div>
     </div>
 
   </nav>
 
   <div class="container">
     <div class="card ui mt-3">
-      <div class="card-header ui">Explore routines</div>
+      <div class="card-header ui"><h4>Welcome, <span class="user-name">User</span></h4></div>
       <div class="card-body ui px-5">
         <div class="title">
-          <h3>My routines</h3>
+          <h3>My routines <i class="fas fa-spinner fa-spin ml-3"></i> </h3>
         </div>
+        
+        <div class="owl-carousel owl-theme mt-3"></div>
 
-        <div class="row mt-3">
-          <div class="col-3">
-            <div class="card routinecard text-white bg-info mb-3" style="max-width: 18rem;">
-              <div class="card-header">Name of Routine</div>
-              <div class="card-body">
-                <div id="Created by:">Created by:</div>
-                <div id="Duration:">Duration:</div>
-                <div class="more">
-                  <div class="launch-routine" data="Z-13">
-                    Go <i class="fa fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="card routinecard text-white bg-danger mb-3" style="max-width: 18rem;">
-              <div class="card-header">Name of Routine</div>
-              <div class="card-body">
-                <div id="Created by:">Created by:</div>
-                <div id="Duration:">Duration:</div>
-                <div class="more">
-                  <div class="launch-routine" data="Z-14">
-                    Go <i class="fa fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="card routinecard text-white bg-success mb-3" style="max-width: 18rem;">
-              <div class="card-header">Name of Routine</div>
-              <div class="card-body">
-                <div id="Created by:">Created by:</div>
-                <div id="Duration:">Duration:</div>
-                <div class="more">
-                  <div class="launch-routine" data="Z-15">
-                    Go <i class="fa fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="card routinecard text-white bg-warning mb-3" style="max-width: 18rem;">
-              <div class="card-header">Name of Routine</div>
-              <div class="card-body">
-                <div id="Created by:">Created by:</div>
-                <div id="Duration:">Duration:</div>
-                <div class="more">
-                  <div class="launch-routine" data="Z-4">
-                    Go <i class="fa fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
-  <button type="button" class="btn btn-secondary" id="log-out">Log out</button>
-                        
+  <div class="template card routinecard text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header px-2">
+      <div class="row no-gutters">
+        <div class="col-1"></div>
+        <div class="col-10"><i class="routinecard-title">Routine name</i></div>
+        <div class="col-1"><i class="fas fa-ellipsis-v"></i></div>
+      </div>
+    </div>
+    <div class="card-body py-2">
+      <div id="Created by:">Created by:</div>
+      <div id="Duration:">Duration:</div>
+      <div class="launch-routine mt-2" data="routine-id">
+        Go <i class="fa fa-angle-double-right"></i>
+      </div>
+    </div>
+  </div>                        
  
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script defer src="libraries/owlcarousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 <script src="scripts/routineplayer.js"></script>
 <script src="scripts/home.js"></script>
-
 
 </html>
