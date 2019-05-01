@@ -12,3 +12,30 @@
 .zoebtn{
     width: 38px !important;
 }
+
+.fa-trash-alt{
+    color: #5A717D;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.seconds{
+    width: 60px;
+    display: inline;
+}
+
+#template, .new-exercise, .add-form {
+    display: flex;
+}
+
+.controls {
+    width: 250px;
+}
+
+.add-buttons {
+    width: 250px;
+}
+
+.name-label {
+    flex-grow: 1;
+}
