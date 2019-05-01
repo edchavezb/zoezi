@@ -1,0 +1,64 @@
+.login-block{
+/* background: rgb(108, 146, 144);   */
+background-repeat: no-repeat;
+height: 100%; 
+width:100%;
+padding : 100px;
+}
+
+body, html{
+background-position: center;
+background-size: cover;
+font-family: sans-serif;
+zoom: 85%;
+}
+
+.img {
+  background-size: cover; 
+  min-height:770px;
+  margin-left: 20px;
+} 
+
+.container {
+    background:#fff; 
+    box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+}
+
+.login-sec{
+    padding: 50px 30px; 
+    position:relative;
+}
+
+.login-sec h2{
+    margin-bottom:30px; 
+    font-weight:800; 
+    font-size:30px; 
+    color: rgb(151, 183, 189);
+}
+
+.login-sec h2:after{
+    content:" "; 
+    width:100px; 
+    height:5px; 
+    /* background: #decac3; */
+    background: #815a7f;
+    display:block; 
+    margin-top:20px; 
+    border-radius:3px; 
+    margin-left:auto;
+    margin-right:auto
+}
+.btn-login{
+    background: rgb(151, 183, 189); 
+    color:#fff; 
+    font-weight:600;
+}
+
+.btn1, .btn2 {    
+    height: 60px;
+}
+
+#log-in, #sign-up {
+    width: 320px;
+}
+

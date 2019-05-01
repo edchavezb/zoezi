@@ -76,7 +76,16 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active ml-md-3" href="routines.html">My profile<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="addroutine.html">Create routine</a>
-      <a class="nav-item nav-link" href="explore.html">Explore routines</a>
+      <a class="nav-item nav-link disabled" href="explore.html">Explore routines</a>
+    </div>
+
+    <div class="navbar-nav ml-auto">
+      <div class="dropdown">
+        <span class="dropdown-toggle user text-white" data-toggle="dropdown">User</span>
+        <ul class="dropdown-menu dropdown-menu-right mt-2 px-3 py-2">
+          <li id="log-out">Log out</li>
+        </ul>
+      </div>
     </div>
 
   </nav>
@@ -110,8 +119,8 @@
         Go <i class="fa fa-angle-double-right"></i>
       </div>
     </div>
-  </div>
-
+  </div>                        
+ 
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -119,5 +128,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
 <script src="scripts/routineplayer.js"></script>
+<script src="scripts/home.js"></script>
 
 </html>

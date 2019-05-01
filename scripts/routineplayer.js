@@ -8,21 +8,24 @@ var config = {
 };
 
 firebase.initializeApp(config);
-var database = firebase.database();
 
-var user = firebase.auth().currentUser;
+var database = firebase.database();
 var myRoutines = [];
 var routineData = [];
 
-database.ref(user + "/routines").on("value", function(snapshot) {
-  $(".fa-spinner").show();
-  myRoutines = snapshot.val().split(",");
-  console.log(myRoutines);
-  fetchRoutines();
-  setTimeout(createCards, 2000);
-});
+$(".fa-spinner").show();
+setTimeout(dataLoad, 1000);
 
-function fetchRoutines() {
+function dataLoad(){
+  var user = firebase.auth().currentUser.uid;
+  database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
+    myRoutines = JSON.parse(snapshot.val());
+    fetchRoutines();
+    setTimeout(createCards, 1000);
+  });
+}
+
+function fetchRoutines(){
   for(var i = 0; i < myRoutines.length; i++){
     database.ref("routines/" + myRoutines[i]).once("value").then(function(snapshot){
       var routineReference = snapshot.key;
@@ -106,14 +109,14 @@ function startExercise(){
   $(".exercise-name").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q=exercise+"+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
   $.ajax({
       url: queryURL,
       method: "GET"
       }).then(function(response) {
           $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
   });
-}
+};
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".start-routine").text("Start");
@@ -132,6 +135,7 @@ $(document.body).on("click", ".launch-routine", function() {
   routineSelect = $(this).attr("data");
   database.ref("/routines").once('value').then(function(snapshot){
     $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
+
     $(".ExeName").text("Get Set!");
   });
 
@@ -196,4 +200,34 @@ function timeConverter(t) {
     minutes = "0" + minutes;
   }
   return minutes + ":" + seconds;
-}
+};
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+
+    // ...
+  } else {
+    
+    location.href = "index.html";
+    console.log("User is signed out");
+    // ...
+  }
+});
+
+$(document.body).on("click", "#log-out", function() {
+
+  console.log("log out")
+  firebase.auth().signOut()
+  //   // Handle Errors here.
+  //   var errorCode = error.code;
+  //   var errorMessage = error.message;
+  //   // ...
+    
+  //   alert(errorCode +"message :"+ errorMessage);
+  // });
+
+  location.href = "index.html"
+
+
+});
