@@ -58,3 +58,7 @@ cursor: pointer;
 .launch-routine:hover {
     color: #fff; background-color: #63B76C;
 }
+
+.template{
+    display: none;
+}

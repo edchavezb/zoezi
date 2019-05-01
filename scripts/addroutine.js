@@ -19,6 +19,8 @@ if (user != null) {
   uid = user.uid;
 }
 
+console.log(user)
+
 $(".time-display").hide();
 
 var database = firebase.database();
