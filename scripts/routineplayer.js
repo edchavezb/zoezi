@@ -10,10 +10,62 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var myRoutines = [];
+var routineData = [];
+
+$(".fa-spinner").show();
+setTimeout(dataLoad, 1000);
+
+function dataLoad(){
+  var user = firebase.auth().currentUser.uid;
+  database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
+    myRoutines = JSON.parse(snapshot.val());
+    fetchRoutines();
+    setTimeout(createCards, 1000);
+  });
+}
+
+function fetchRoutines(){
+  for(var i = 0; i < myRoutines.length; i++){
+    database.ref("routines/" + myRoutines[i]).once("value").then(function(snapshot){
+      var routineReference = snapshot.key;
+      var newObject = snapshot.val();
+      routineData[routineReference] = newObject;
+    });
+  }; 
+}
+  
+function createCards(){
+  $(".fa-spinner").hide();
+  console.log(routineData);
+  for(var i = 0; i < myRoutines.length; i++){
+    var newRoutine = $("<div>");
+    newRoutine.html($(".template").html());
+    newRoutine.addClass("card routinecard text-white bg-info");
+    newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
+    newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name)
+    $(".owl-carousel").append(newRoutine);
+  }
+  $(".owl-carousel").owlCarousel({
+    loop:false,
+    margin:10,
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:3
+      },
+      1000:{
+        items:5
+      }
+    }
+  });
+}
 
 var exerciseCount = 0;
 var chosenTimers = [5];
-var exerciseName = ["get ready!"];
+var exerciseName = ["Get set!"];
 var currentTimer = 0;
 var timerTime = 0;
 var globalTime = 0;
@@ -54,7 +106,7 @@ function startExercise(){
   timerTime = chosenTimers[currentTimer];
   console.log(exerciseName[currentTimer]);
   $(".time-left").html(timerTime);
-  $(".ExeName").text(exerciseName[currentTimer]);
+  $(".exercise-name").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
   queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
@@ -132,12 +184,9 @@ $(document.body).on("click", ".pause-routine", function() {
     global = setInterval(countUp, 1000);
     running = false;
   }
-
-
-})
+});
 
 function timeConverter(t) {
-
   var minutes = Math.floor(t / 60);
   var seconds = t - (minutes * 60);
 
@@ -150,7 +199,6 @@ function timeConverter(t) {
   else if (minutes < 10) {
     minutes = "0" + minutes;
   }
-
   return minutes + ":" + seconds;
 };
 
@@ -162,7 +210,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     
     location.href = "index.html";
-    consol.log("User is signed out");
+    console.log("User is signed out");
     // ...
   }
 });
@@ -179,7 +227,7 @@ $(document.body).on("click", "#log-out", function() {
   //   alert(errorCode +"message :"+ errorMessage);
   // });
 
-      location.href = "index.html"
+  location.href = "index.html"
 
 
 });

@@ -32,6 +32,6 @@ body {
     background: rgb(90, 113, 125);
 }
 
-
-
-
+.user, #log-out {
+    cursor: pointer;
+}
