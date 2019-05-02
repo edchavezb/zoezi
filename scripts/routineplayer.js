@@ -13,7 +13,20 @@ var database = firebase.database();
 var myRoutines = [];
 var routineData = [];
 var routineTypeArr =  [];
-var disp = ".owl-carousel"; 
+var disp = ".MyRoutines"; 
+
+// queryURL = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//     }).then(function(response) {
+//       console.log(response)
+//         $(".quote").html(response.content);
+//         $(".quote-author").html("-"+response.title);
+// });
+
+
+
 
 $(".fa-spinner").show();
 setTimeout(dataLoad, 1000)
@@ -26,7 +39,7 @@ setTimeout(function(){
     console.log("segunda vuelta"+myRoutines)
   });
   
-  setTimeout(fetchRoutines, 6000);
+  setTimeout(fetchRoutines, 500);
 
   console.log("segunda vuelta routines"+routineData);
 
@@ -37,16 +50,20 @@ setTimeout(function(){
 
       var newRoutine = $("<div>");
       newRoutine.html($(".template").html());
-      newRoutine.addClass("card routinecard text-white");
+      newRoutine.addClass("card routinecard text-white mb-3");
       switch(routineData[myRoutines[i]].goal){
         case "yoga":
-          newRoutine.addClass("bg-dark");
+          newRoutine.addClass("bg-info");
+          break;
         case "strength":
           newRoutine.addClass("bg-danger");
+          break;
         case "cardio":
           newRoutine.addClass("bg-warning");
+          break;
         case "fun":
           newRoutine.addClass("bg-success");
+          break;
         default:
           newRoutine.addClass("bg-secondary");
       };
@@ -57,26 +74,25 @@ setTimeout(function(){
       newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
       $(".recomended").append(newRoutine);
 
-
-
     };
-  },5000)
-
-  $(".recomended").owlCarousel({
-    loop:false,
-    margin:10,
-    responsive:{
-      0:{
-        items:1
-      },
-      600:{
-        items:3
-      },
-      1000:{
-        items:5
+    $(".recomended").owlCarousel({
+      loop:false,
+      margin:10,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1000:{
+          items:5
+        }
       }
-    }
-  });
+    });
+  },2000)
+
+
 
 },3000);
 
@@ -133,7 +149,7 @@ function createCards(){
     newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
     $(disp).append(newRoutine);
   }
-  $(".owl-carousel").owlCarousel({
+  $(".MyRoutines").owlCarousel({
     loop:false,
     margin:10,
     responsive:{
@@ -321,3 +337,41 @@ $(document.body).on("click", "#log-out", function() {
 
 
 });
+
+var quotes = [
+  {
+    content: "With the new day comes new strength and new thoughts.",
+    author: " Eleanor Roosevelt"
+  },
+  {
+    content: "It does not matter how slowly you go as long as you do not stop.",
+    author: " Confucius"
+  },
+  {
+    content: "Change your life today. Don't gamble on the future, act now, without delay.",
+    author: " Simone de Beauvoir"
+  },
+  {
+    content: "The past cannot be changed. The future is yet in your power.",
+    author: "Unknown"
+  },
+  {
+    content: "Failure will never overtake me if my determination to succeed is strong enough.",
+    author: " Og Mandino"
+  },
+  {
+    content: "Only I can change my life. No one can do it for me.",
+    author: " Carol Burnett"
+  },
+  {
+    content: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
+    author: " Michael Jordan"
+  },
+  {
+    content: "Some people want it to happen, some wish it would happen, others make it happen.",
+    author: " Michael Jordan"
+  },
+];
+var rnd = Math.floor(Math.random()*8);
+$(".quote").html("''"+quotes[rnd].content+"''");
+$(".quote-author").html("-"+ quotes[rnd].author);
