@@ -12,6 +12,8 @@ firebase.initializeApp(config);
 
 var user = firebase.auth().currentUser;
 var email, uid, emailVerified;
+var totalTime = 0;
+
 
 if (user != null) {
   email = user.email;
@@ -19,7 +21,6 @@ if (user != null) {
   uid = user.uid;
 }
 
-console.log(user)
 
 $(".time-display").hide();
 
@@ -34,7 +35,7 @@ function calculateTotal() {
   $(".new-exercise").each(function(){
     cycleTime += parseInt($(this).attr("time"));
   });
-  var totalTime = cycleTime * cycles;
+  totalTime = cycleTime * cycles;
   $(".cycle-time").text("Cycle duration: " + cycleTime);
   $(".total-time").text("Total duration: " + totalTime);
 };
@@ -130,6 +131,7 @@ $("#save-routine").on("click", function () {
     name: $("#routine-input").val().trim(),
     goal: $("#goal-input").val().trim(),
     target: $("#target-input").val().trim(),
+    time: totalTime,
     cycles: cycles,
     exercises: routineArray,
   });
@@ -146,13 +148,9 @@ $("#save-routine").on("click", function () {
       database.ref("/Users/"+firebase.auth().currentUser.uid).child("userRoutines");
     }
 
-    console.log(uRoutinesArr)
     uRoutinesArr.push(routineId)
 
 
-    // database.ref("/Users/"+firebase.auth().currentUser.uid).set({
-    //   routines : UroutinsArr
-    // })
     database.ref("/Users/"+firebase.auth().currentUser.uid).update({userRoutines : JSON.stringify(uRoutinesArr)});
   });
 

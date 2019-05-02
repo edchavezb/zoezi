@@ -12,18 +12,106 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var myRoutines = [];
 var routineData = [];
+var routineTypeArr =  [];
+var disp = ".MyRoutines"; 
+
+// queryURL = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//     }).then(function(response) {
+//       console.log(response)
+//         $(".quote").html(response.content);
+//         $(".quote-author").html("-"+response.title);
+// });
+
+
+
 
 $(".fa-spinner").show();
-setTimeout(dataLoad, 1000);
+setTimeout(dataLoad, 1000)
+
+setTimeout(function(){
+
+  database.ref().on("value", function(snapshot) {
+    console.log(snapshot.val().user_1)
+    myRoutines = snapshot.val().user_1.split(',')
+    console.log("segunda vuelta"+myRoutines)
+  });
+  
+  setTimeout(fetchRoutines, 500);
+
+  console.log("segunda vuelta routines"+routineData);
+
+  // setTimeout( createCards, 7000);
+  
+  setTimeout(function(){
+    for(var i = 0; i < myRoutines.length; i++){
+
+      var newRoutine = $("<div>");
+      newRoutine.html($(".template").html());
+      newRoutine.addClass("card routinecard text-white mb-3");
+      switch(routineData[myRoutines[i]].goal){
+        case "yoga":
+          newRoutine.addClass("bg-info");
+          break;
+        case "strength":
+          newRoutine.addClass("bg-danger");
+          break;
+        case "cardio":
+          newRoutine.addClass("bg-warning");
+          break;
+        case "fun":
+          newRoutine.addClass("bg-success");
+          break;
+        default:
+          newRoutine.addClass("bg-secondary");
+      };
+
+      newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
+      newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
+      newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
+      newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
+      $(".recomended").append(newRoutine);
+
+    };
+    $(".recomended").owlCarousel({
+      loop:false,
+      margin:10,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1000:{
+          items:5
+        }
+      }
+    });
+  },2000)
+
+
+
+},3000);
 
 function dataLoad(){
   var user = firebase.auth().currentUser.uid;
+  database.ref("Users/" + user + "/userInfo/dbname").on("value", function(snapshot){
+
+    $(".user").text(JSON.parse(snapshot.val()));
+    $(".user-name").text(JSON.parse(snapshot.val()));
+
+  });
   database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
     myRoutines = JSON.parse(snapshot.val());
     fetchRoutines();
-    setTimeout(createCards, 1000);
   });
-}
+  
+  setTimeout(createCards, 1000);
+
+};
 
 function fetchRoutines(){
   for(var i = 0; i < myRoutines.length; i++){
@@ -32,21 +120,36 @@ function fetchRoutines(){
       var newObject = snapshot.val();
       routineData[routineReference] = newObject;
     });
-  }; 
+  };
 }
   
 function createCards(){
   $(".fa-spinner").hide();
-  console.log(routineData);
   for(var i = 0; i < myRoutines.length; i++){
+
     var newRoutine = $("<div>");
     newRoutine.html($(".template").html());
-    newRoutine.addClass("card routinecard text-white bg-info");
+    newRoutine.addClass("card routinecard text-white");
+    switch(routineData[myRoutines[i]].goal){
+      case "yoga":
+        newRoutine.addClass("bg-dark");
+      case "strength":
+        newRoutine.addClass("bg-danger");
+      case "cardio":
+        newRoutine.addClass("bg-warning");
+      case "fun":
+        newRoutine.addClass("bg-success");
+      default:
+        newRoutine.addClass("bg-secondary");
+    };
+
     newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
-    newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name)
-    $(".owl-carousel").append(newRoutine);
+    newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
+    newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
+    newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
+    $(disp).append(newRoutine);
   }
-  $(".owl-carousel").owlCarousel({
+  $(".MyRoutines").owlCarousel({
     loop:false,
     margin:10,
     responsive:{
@@ -72,6 +175,7 @@ var globalTime = 0;
 var exerciseTimer;
 var global;
 var running = false;
+var routineType ="";
 
 function routineStart(){
   $(".global").html(timeConverter(globalTime));
@@ -104,17 +208,17 @@ function countDown() {
 
 function startExercise(){
   timerTime = chosenTimers[currentTimer];
-  console.log(exerciseName[currentTimer]);
   $(".time-left").html(timerTime);
   $(".exercise-name").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&limit=15&offset=10&rating=G&lang=en&q="+routineType+"%20"+ exerciseName[currentTimer]
   $.ajax({
       url: queryURL,
       method: "GET"
       }).then(function(response) {
-          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
+        console.log(queryURL)
+          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.fixed_height.url)
   });
 };
 
@@ -154,6 +258,8 @@ $(document.body).on("click", ".start-routine", function() {
 
   database.ref("/routines/"+ routineSelect).once('value').then(function(snapshot){
     exerciseCount = snapshot.child("exercises").numChildren();
+    routineType = snapshot.child("goal").val();
+
 
     for (var i = 1; i<=exerciseCount; i++){
       chosenTimers[i] = (JSON.parse(snapshot.child("exercises/"+ (i-1) +"/length").val()));
@@ -231,3 +337,41 @@ $(document.body).on("click", "#log-out", function() {
 
 
 });
+
+var quotes = [
+  {
+    content: "With the new day comes new strength and new thoughts.",
+    author: " Eleanor Roosevelt"
+  },
+  {
+    content: "It does not matter how slowly you go as long as you do not stop.",
+    author: " Confucius"
+  },
+  {
+    content: "Change your life today. Don't gamble on the future, act now, without delay.",
+    author: " Simone de Beauvoir"
+  },
+  {
+    content: "The past cannot be changed. The future is yet in your power.",
+    author: "Unknown"
+  },
+  {
+    content: "Failure will never overtake me if my determination to succeed is strong enough.",
+    author: " Og Mandino"
+  },
+  {
+    content: "Only I can change my life. No one can do it for me.",
+    author: " Carol Burnett"
+  },
+  {
+    content: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
+    author: " Michael Jordan"
+  },
+  {
+    content: "Some people want it to happen, some wish it would happen, others make it happen.",
+    author: " Michael Jordan"
+  },
+];
+var rnd = Math.floor(Math.random()*8);
+$(".quote").html("''"+quotes[rnd].content+"''");
+$(".quote-author").html("-"+ quotes[rnd].author);

@@ -17,6 +17,7 @@ $(document.body).on("click", "#sign-up", function(e) {
   console.log("botton sign in.")
   var email = $("#email-input").val();
   var password = $("#password-input").val();
+  
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
   // Handle Errors here.
@@ -62,7 +63,8 @@ $(document.body).on("click", "#log-out", function(e) {
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    var displayName = user.displayName;
+    var displayName = JSON.stringify(user.email.split('@',1));
+    console.log(displayName);
     email = user.email;
     // var emailVerified = user.emailVerified;
     // var photoURL = user.photoURL;
