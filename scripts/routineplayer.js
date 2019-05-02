@@ -12,12 +12,19 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var myRoutines = [];
 var routineData = [];
+var routineTypeArr =  [];
 
 $(".fa-spinner").show();
 setTimeout(dataLoad, 1000);
 
 function dataLoad(){
   var user = firebase.auth().currentUser.uid;
+  database.ref("Users/" + user + "/userInfo/dbname").on("value", function(snapshot){
+
+    $(".user").text(JSON.parse(snapshot.val()));
+    $(".user-name").text(JSON.parse(snapshot.val()));
+
+  });
   database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
     myRoutines = JSON.parse(snapshot.val());
     fetchRoutines();
@@ -37,13 +44,28 @@ function fetchRoutines(){
   
 function createCards(){
   $(".fa-spinner").hide();
-  console.log(routineData);
   for(var i = 0; i < myRoutines.length; i++){
+
     var newRoutine = $("<div>");
     newRoutine.html($(".template").html());
-    newRoutine.addClass("card routinecard text-white bg-info");
+    newRoutine.addClass("card routinecard text-white");
+    switch(routineData[myRoutines[i]].goal){
+      case "yoga":
+        newRoutine.addClass("bg-dark");
+      case "strength":
+        newRoutine.addClass("bg-danger");
+      case "cardio":
+        newRoutine.addClass("bg-warning");
+      case "fun":
+        newRoutine.addClass("bg-success");
+      default:
+        newRoutine.addClass("bg-secondary");
+    };
+
     newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
-    newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name)
+    newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
+    newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
+    newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
     $(".owl-carousel").append(newRoutine);
   }
   $(".owl-carousel").owlCarousel({
@@ -72,6 +94,7 @@ var globalTime = 0;
 var exerciseTimer;
 var global;
 var running = false;
+var routineType ="";
 
 function routineStart(){
   $(".global").html(timeConverter(globalTime));
@@ -104,17 +127,17 @@ function countDown() {
 
 function startExercise(){
   timerTime = chosenTimers[currentTimer];
-  console.log(exerciseName[currentTimer]);
   $(".time-left").html(timerTime);
   $(".exercise-name").text(exerciseName[currentTimer]);
   exerciseTimer = setInterval(countDown, 1000);
 
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[currentTimer] +"&limit=15&offset=5&rating=G&lang=en"
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&limit=15&offset=10&rating=G&lang=en&q="+routineType+"%20"+ exerciseName[currentTimer]
   $.ajax({
       url: queryURL,
       method: "GET"
       }).then(function(response) {
-          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
+        console.log(queryURL)
+          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.fixed_height.url)
   });
 };
 
@@ -154,6 +177,8 @@ $(document.body).on("click", ".start-routine", function() {
 
   database.ref("/routines/"+ routineSelect).once('value').then(function(snapshot){
     exerciseCount = snapshot.child("exercises").numChildren();
+    routineType = snapshot.child("goal").val();
+
 
     for (var i = 1; i<=exerciseCount; i++){
       chosenTimers[i] = (JSON.parse(snapshot.child("exercises/"+ (i-1) +"/length").val()));
