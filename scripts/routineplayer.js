@@ -13,9 +13,72 @@ var database = firebase.database();
 var myRoutines = [];
 var routineData = [];
 var routineTypeArr =  [];
+var disp = ".owl-carousel"; 
 
 $(".fa-spinner").show();
-setTimeout(dataLoad, 1000);
+setTimeout(dataLoad, 1000)
+
+setTimeout(function(){
+
+  database.ref().on("value", function(snapshot) {
+    console.log(snapshot.val().user_1)
+    myRoutines = snapshot.val().user_1.split(',')
+    console.log("segunda vuelta"+myRoutines)
+  });
+  
+  setTimeout(fetchRoutines, 6000);
+
+  console.log("segunda vuelta routines"+routineData);
+
+  // setTimeout( createCards, 7000);
+  
+  setTimeout(function(){
+    for(var i = 0; i < myRoutines.length; i++){
+
+      var newRoutine = $("<div>");
+      newRoutine.html($(".template").html());
+      newRoutine.addClass("card routinecard text-white");
+      switch(routineData[myRoutines[i]].goal){
+        case "yoga":
+          newRoutine.addClass("bg-dark");
+        case "strength":
+          newRoutine.addClass("bg-danger");
+        case "cardio":
+          newRoutine.addClass("bg-warning");
+        case "fun":
+          newRoutine.addClass("bg-success");
+        default:
+          newRoutine.addClass("bg-secondary");
+      };
+
+      newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
+      newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
+      newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
+      newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
+      $(".recomended").append(newRoutine);
+
+
+
+    };
+  },5000)
+
+  $(".recomended").owlCarousel({
+    loop:false,
+    margin:10,
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:3
+      },
+      1000:{
+        items:5
+      }
+    }
+  });
+
+},3000);
 
 function dataLoad(){
   var user = firebase.auth().currentUser.uid;
@@ -28,9 +91,11 @@ function dataLoad(){
   database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
     myRoutines = JSON.parse(snapshot.val());
     fetchRoutines();
-    setTimeout(createCards, 1000);
   });
-}
+  
+  setTimeout(createCards, 1000);
+
+};
 
 function fetchRoutines(){
   for(var i = 0; i < myRoutines.length; i++){
@@ -39,7 +104,7 @@ function fetchRoutines(){
       var newObject = snapshot.val();
       routineData[routineReference] = newObject;
     });
-  }; 
+  };
 }
   
 function createCards(){
@@ -66,7 +131,7 @@ function createCards(){
     newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
     newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
     newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
-    $(".owl-carousel").append(newRoutine);
+    $(disp).append(newRoutine);
   }
   $(".owl-carousel").owlCarousel({
     loop:false,
