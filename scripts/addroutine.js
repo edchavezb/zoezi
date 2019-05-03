@@ -12,6 +12,8 @@ firebase.initializeApp(config);
 
 var user = firebase.auth().currentUser;
 var email, uid, emailVerified;
+var totalTime = 0;
+
 
 if (user != null) {
   email = user.email;
@@ -19,7 +21,6 @@ if (user != null) {
   uid = user.uid;
 }
 
-console.log(user)
 
 $(".time-display").hide();
 
