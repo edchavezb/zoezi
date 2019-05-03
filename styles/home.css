@@ -6,6 +6,20 @@ width:100%;
 padding : 100px;
 }
 
+@media (max-width:768px) {
+    .login-block {
+        padding : 30px;
+    }
+    .btn-login {
+        float: none !important;
+    }
+    .img{
+        width: 90%;
+        min-height: auto;
+        margin-bottom: 30px;
+    }
+}
+
 body, html{
 background-position: center;
 background-size: cover;
@@ -15,7 +29,7 @@ zoom: 85%;
 
 .img {
   background-size: cover; 
-  min-height:770px;
+  /*min-height:770px;*/
   margin-left: 20px;
 } 
 

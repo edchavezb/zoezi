@@ -34,8 +34,28 @@
 
 .add-buttons {
     width: 250px;
+    display: inline;
 }
 
-.name-label {
+.name-label, .exercise-name {
     flex-grow: 1;
+}
+
+.weekdays {
+    display: inline
+}
+
+#remove-exercise, .name-label {
+    height: 38px;
+    line-height: 38px;
+    vertical-align: middle;
+}
+
+.saved-alert{
+    display: none;
+}
+
+.dismiss{
+    float: right;
+    cursor: pointer;
 }

@@ -4,13 +4,24 @@ body {
 
 .modal-content {
 background-color: #E9ECEF;
-margin: 15% auto; /* 15% from the top and centered */
+margin: 15% auto;
 padding: 20px;
 border: 1px solid #888;
-width: 60%; /* Could be more or less, depending on screen size */
+width: 60%;
 top: -150px !important;
 }
-  
+
+@media (max-width:768px) {
+    .modal-content {
+        width: 95%;
+        top: 0px !important;
+    }
+
+    .gif-display{
+        display: none;
+    }
+}
+
 .close {
 color: #aaa;
 float: right;

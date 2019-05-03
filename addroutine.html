@@ -22,12 +22,25 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link ml-md-3" href="routines.html"> My profile </a>
       <a class="nav-item nav-link active" href="addroutine.html"> Create routine <span class="sr-only">(current)</span> </a>
-      <a class="nav-item nav-link" href="explore.html"> Explore routines </a>
+    </div>
+
+    <div class="navbar-nav ml-auto">
+      <div class="dropdown">
+        <span class="dropdown-toggle user text-white" data-toggle="dropdown">User</span>
+        <ul class="dropdown-menu dropdown-menu-right mt-2 px-3 py-2">
+          <li id="log-out">Log out</li>
+        </ul>
+      </div>
     </div>
 
   </nav>
 
   <div class="container">
+
+    <div class="saved-alert alert alert-info mt-3 mb-n2" role="alert">
+      Your routine was saved! <span class="dismiss">(dismiss)</span>
+    </div>
+
     <div class="card ui mt-3">
       <div class="card-header ui">Routine settings</div>
       <div class="card-body ui">
@@ -41,12 +54,25 @@
             </div>
             <div class="row ml-md-3">
               <div class="form-group col-6">
-                <label for="goal-input">Routine type:</label>
-                <input type="text" class="form-control" id="goal-input">
+                <label for="type-input">Routine type:</label>
+                <select name="type" class="form-control" id="type-input">
+                  <option value="strength">Strength</option>
+                  <option value="cardio">Cardio</option>
+                  <option value="yoga">Yoga</option>
+                  <option value="fun">Fun</option>
+                  <option value="Mixed">Mixed</option>
+                </select>
               </div>
               <div class="form-group col-6">
-                <label for="goal-input">Target muscle:</label>
-                <input type="text" class="form-control" id="target-input">
+                <label for="target-input">Target muscle:</label>
+                <select name="target" class="form-control" id="target-input">
+                  <option value="legs">Legs</option>
+                  <option value="arms">Arms</option>
+                  <option value="abs">Abs</option>
+                  <option value="glutes">Glutes</option>
+                  <option value="back">Back</option>
+                  <option value="mixed">Mixed</option>
+                </select>
               </div>
             </div>
           </div>
@@ -54,14 +80,105 @@
             <div class="row mt-4">
               <div class="col-12">
                 <div class="form-group text-center">
-                  <label for="keyword">Week days:</label>
-                  <button type="button" class="btn btn-secondary zoebtn ml-2" id="monday">M</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="tuesday">T</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="wednesday">W</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="thursday">T</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="friday">F</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="saturday">S</button>
-                  <button type="button" class="btn btn-secondary zoebtn" id="sunday">S</button>
+                  <label for="weekdays">Week days:</label>
+
+                  <div class="dropdown weekdays ml-2">
+                    <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"> Select </button>
+                    
+                    <div class="dropdown-menu mt-2 px-2 py-2" aria-labelledby="dropdownMenuButton">
+      
+                      <h6 class="dropdown-header">Make your schedule!</h6>
+                      <form class="px-4 py-2">
+      
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Monday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Monday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Tuesday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Tuesday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Wednesday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Wednesday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Thursday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Thursday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Friday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Friday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Saturday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Saturday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="selector">
+                          <div class="first form-group row mb-1">
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="dropdownCheck" value="Sunday">
+                              <label class="form-check-label" for="dropdownCheck">
+                                Sunday
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+      
+                        <div class="form-group row mt-3 mb-0 text-center">
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-secondary" id="save-days">Save</button>
+                          </div>
+                        </div>
+      
+                      </form>
+      
+                    </div>
+
+                  </div> 
+
                 </div>
               </div>
             </div>
@@ -92,13 +209,13 @@
             <div id="template" class="d-none row">
               <div class="name-label text-center">Template</div>
 
-              <div class="controls">
+              <div class="controls ml-5 ml-md-0">
 
                 <input type="text" class="seconds form-control" id="time" value="30">
-                <span class="ml-1"> sec </span>
-                <button type="button" class="btn btn-secondary zoebtn ml-3" id="subtract-time">-</button>
+                <span class="ml-md-1"> sec </span>
+                <button type="button" class="btn btn-secondary zoebtn ml-2 ml-md-3" id="subtract-time">-</button>
                 <button type="button" class="btn btn-secondary zoebtn" id="add-time">+</button>
-                <span><i class="fas fa-trash-alt ml-2"></i></span>
+                <span><i class="fas fa-trash-alt ml-2" id="remove-exercise"></i></span>
 
               </div>
             </div>
@@ -109,29 +226,29 @@
 
         <div class="row time-display mt-4 mb-4">
           <div class="col-6"></div>
-          <div class="col-6 text-right">
-            <span class="cycle-time px-3"> Cycle length: </span>
-            <span class="total-time pl-3 pr-5"> Total duration: </span>
+          <div class="col-12 col-md-6 text-right">
+            <span class="cycle-time px-md-3"> Cycle: </span>
+            <span class="total-time pl-3 pr-md-5"> Total: </span>
           </div>
         </div><br>
 
-        <div class="form-row ml-4">
+        <div class="row ml-0 ml-md-4">
           <label for="name-input">Name of exercise:</label>
         </div>
-        <div class="form-row add-form ml-3">
+        <div class="row add-form ml-md-3">
 
           <div class="form-group name-label px-2">
             <input type="text" class="form-control" id="name-input">
           </div>
 
-          <div class="form-group add-buttons">
+          <div class="form-group add-buttons ml-2 ml-md-0">
             <button class="btn btn-secondary" id="add-exercise" type="submit">Add Exercise</button>
             <button class="btn btn-secondary" id="add-break">Add Break</button>
           </div>
 
         </div>
 
-        <div class="form-row ml-3 mt-3">
+        <div class="form-row mt-3 mb-3">
           <div class="col-12 text-center">
             <button class="btn btn-secondary" id="save-routine">Save routine</button>
             <button class="btn btn-secondary" id="discard">Discard changes</button>
