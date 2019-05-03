@@ -25,9 +25,6 @@ var disp = ".MyRoutines";
 //         $(".quote-author").html("-"+response.title);
 // });
 
-
-
-
 $(".fa-spinner").show();
 setTimeout(dataLoad, 1000)
 
@@ -167,15 +164,21 @@ function createCards(){
 }
 
 var exerciseCount = 0;
-var chosenTimers = [5];
+var chosenTimers = [10];
 var exerciseName = ["Get set!"];
 var currentTimer = 0;
 var timerTime = 0;
 var globalTime = 0;
+var currentExercise;
 var exerciseTimer;
 var global;
 var running = false;
 var routineType ="";
+
+var announce = new Audio("sounds/next_exercise.mp3");
+var changeWhistle = new Audio("sounds/whistle_change.mp3");
+var finalSound = new Audio("sounds/success.mp3");
+var getReady = new Audio("sounds/get_ready.mp3");
 
 function routineStart(){
   $(".global").html(timeConverter(globalTime));
@@ -186,18 +189,25 @@ function routineStart(){
 function countUp(){
   globalTime++;
   $(".global").html(timeConverter(globalTime));
+  if (timerTime === 6){
+    announce.play();
+  };
   if (timerTime === 1){
     currentTimer++;
     clearInterval(exerciseTimer);
     startExercise();
     console.log("Switch");
+    changeWhistle.play();
   };
   if (currentTimer >= chosenTimers.length){
     console.log("Finished")
+    currentExercise = "Victory";
     $(".finish").html("Finished!");
     $(".time-left").html("0");
     clearInterval(exerciseTimer);
     clearInterval(global);
+    finalSound.play();
+    getGif();
   }
 };
 
@@ -208,25 +218,21 @@ function countDown() {
 
 function startExercise(){
   timerTime = chosenTimers[currentTimer];
+  currentExercise = exerciseName[currentTimer];
+  console.log(currentExercise);
   $(".time-left").html(timerTime);
-  $(".exercise-name").text(exerciseName[currentTimer]);
+  $(".exercise-name").text(currentExercise);
   exerciseTimer = setInterval(countDown, 1000);
-
-  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&limit=15&offset=10&rating=G&lang=en&q="+routineType+"%20"+ exerciseName[currentTimer]
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-      }).then(function(response) {
-        console.log(queryURL)
-          $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.fixed_height.url)
-  });
+  getGif();
 };
 
 $(document.body).on("click", ".launch-routine", function() {
+  $(".pause-routine").hide();
   $(".start-routine").text("Start");
   $(".start-routine").attr("data-routine", $(this).attr("data"));
   $("#routine-player").modal("show");
-  running = true;
+  exerciseName = ["Get set!"];
+  running = false;
   currentTimer = 0;
   timerTime = chosenTimers[currentTimer];
   globalTime = 0;
@@ -239,13 +245,14 @@ $(document.body).on("click", ".launch-routine", function() {
   routineSelect = $(this).attr("data");
   database.ref("/routines").once('value').then(function(snapshot){
     $(".routine-title").text(snapshot.child("/"+routineSelect+"/name").val());
-
-    $(".ExeName").text("Get Set!");
+    $(".exercise-name").text("Ready!");
   });
 
 });
 
 $(document.body).on("click", ".start-routine", function() {
+  getReady.play();
+  $(".pause-routine").show();
   $(".start-routine").text("Re-Start");
   $(".finish").text("");
   running = true;
@@ -273,7 +280,6 @@ $(".close").on("click", function (){
   currentTimer = 0;
   timerTime = chosenTimers[currentTimer]
   globalTime = 0;
-  running = true;
   clearInterval(exerciseTimer);
   clearInterval(global);
   $("#routine-player").modal("hide");
@@ -281,16 +287,28 @@ $(".close").on("click", function (){
 
 $(document.body).on("click", ".pause-routine", function() {
   if(running == true){
+    $(".pause-routine").text("Resume");
     clearInterval(exerciseTimer);
     clearInterval(global);
     running = false;
   }
   else{  
+    $(".pause-routine").text("Pause");
     exerciseTimer = setInterval(countDown, 1000);
     global = setInterval(countUp, 1000);
-    running = false;
+    running = true;
   }
 });
+
+function getGif(){
+  queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ currentExercise +"&limit=15&offset=5&rating=G&lang=en"
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    $(".z-image").attr("src",response.data[Math.floor(Math.random()*10)].images.original.url)
+  });
+}
 
 function timeConverter(t) {
   var minutes = Math.floor(t / 60);
