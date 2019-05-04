@@ -48,7 +48,7 @@ setTimeout(function(){
       var newRoutine = $("<div>");
       newRoutine.html($(".template").html());
       newRoutine.addClass("card routinecard text-white mb-3");
-      switch(routineData[myRoutines[i]].goal){
+      switch(routineData[myRoutines[i]].type){
         case "yoga":
           newRoutine.addClass("bg-info");
           break;
@@ -67,12 +67,12 @@ setTimeout(function(){
 
       newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
       newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
-      newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
-      newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
-      $(".recomended").append(newRoutine);
+      newRoutine.find("#type").text("Type: " + routineData[myRoutines[i]].type);
+      newRoutine.find("#duration").text("Duration: " + timeConverter(parseInt(routineData[myRoutines[i]].duration)));
+      $(".recommended").append(newRoutine);
 
     };
-    $(".recomended").owlCarousel({
+    $(".recommended").owlCarousel({
       loop:false,
       margin:10,
       responsive:{
@@ -127,7 +127,7 @@ function createCards(){
     var newRoutine = $("<div>");
     newRoutine.html($(".template").html());
     newRoutine.addClass("card routinecard text-white");
-    switch(routineData[myRoutines[i]].goal){
+    switch(routineData[myRoutines[i]].type){
       case "yoga":
         newRoutine.addClass("bg-dark");
       case "strength":
@@ -142,11 +142,11 @@ function createCards(){
 
     newRoutine.find(".launch-routine").attr("data", myRoutines[i]);
     newRoutine.find(".routinecard-title").text(routineData[myRoutines[i]].name);
-    newRoutine.find("#type").text("Type: "+routineData[myRoutines[i]].goal);
-    newRoutine.find("#Duration").text("Duration (sec):"+routineData[myRoutines[i]].time);
-    $(disp).append(newRoutine);
+    newRoutine.find("#type").text("Type: " + routineData[myRoutines[i]].type);
+    newRoutine.find("#duration").text("Duration: " + timeConverter(parseInt(routineData[myRoutines[i]].duration)));
+    $(".my-routines").append(newRoutine);
   }
-  $(".MyRoutines").owlCarousel({
+  $(".my-routines").owlCarousel({
     loop:false,
     margin:10,
     responsive:{

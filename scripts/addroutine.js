@@ -59,15 +59,15 @@ $("#add-exercise").on("click", function () {
   calculateTotal();
 });
 
-$("#add-break").on("click", function () {
+$("#add-rest").on("click", function () {
   rows++;
-  console.log("Break");
+  console.log("Rest");
   var newBreak = $("<div>");
   newBreak.html($("#template").html());
   newBreak.addClass("new-exercise row mt-1");
   newBreak.attr("time", "30");
   newBreak.attr("row", rows);
-  newBreak.find(".name-label").text("Break");
+  newBreak.find(".name-label").text("Rest");
   $(".display-routine").append(newBreak);
   $(".time-display").show();
   calculateTotal();
