@@ -3,6 +3,7 @@ var chosenTimers = [10];
 var exerciseName = ["Get set!"];
 var exerciseGifs = {};
 var currentTimer = 0;
+var currentCycle = 0;
 var timerTime = 0;
 var globalTime = 0;
 var currentExercise;
@@ -10,7 +11,8 @@ var currentGif;
 var exerciseTimer;
 var global;
 var running = false;
-var routineType ="";
+var routineType = "";
+var routineCycles = 0;
 
 var announce = new Audio("sounds/next_exercise.mp3");
 var changeWhistle = new Audio("sounds/whistle_change.mp3");
@@ -20,10 +22,15 @@ var getReady = new Audio("sounds/get_ready.mp3");
 function routineStart(){
   $(".global").html(timeConverter(globalTime));
   global = setInterval(countUp, 1000);
+  currentCycle = 1;
+  $(".cycle-info").show();
+  $("#current-cycle").html(currentCycle);
+  $("#routine-cycles").html(routineCycles);
   startExercise();
   getGifs();
 }
 
+//This function is executed every second to keep track of the global timer and switch exercises when the current exercise timer gets to zero
 function countUp(){
   globalTime++;
   $(".global").html(timeConverter(globalTime));
@@ -37,7 +44,7 @@ function countUp(){
     console.log("Switch");
     changeWhistle.play();
   };
-  if (currentTimer >= chosenTimers.length){
+  if (currentTimer >= chosenTimers.length && currentCycle === routineCycles){
     console.log("Finished")
     currentExercise = "Victory";
     $(".finish").html("Finished!");
@@ -45,9 +52,18 @@ function countUp(){
     clearInterval(exerciseTimer);
     clearInterval(global);
     finalSound.play();
+
+  } else if (currentTimer >= chosenTimers.length){
+    currentCycle++
+    $("#current-cycle").html(currentCycle);
+    currentTimer = 0;
+    clearInterval(exerciseTimer);
+    startExercise();
+    finalSound.play();
   }
 };
 
+//This function only takes care of counting down depending on the length of the current exercise
 function countDown() {
   timerTime--;
   $(".time-left").html(timerTime);
@@ -66,6 +82,7 @@ function startExercise(){
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".pause-routine").hide();
+  $(".cycle-info").hide();
   $(".start-routine").text("Start");
   $(".start-routine").attr("data-routine", $(this).closest(".routinecard").attr("data"));
   $("#routine-player").modal("show");
@@ -86,6 +103,7 @@ $(document.body).on("click", ".launch-routine", function() {
   $(".exercise-name").text("Ready!");
   exerciseCount = routineData[routineSelect].exercises.length
   routineType = routineData[routineSelect].type
+  routineCycles = routineData[routineSelect].cycles
   for (var i = 1; i<=exerciseCount; i++){
     chosenTimers[i] = routineData[routineSelect].exercises[i-1].length;
     exerciseName[i] = routineData[routineSelect].exercises[i-1].name;
@@ -163,19 +181,13 @@ function timeConverter(t) {
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-
-
-    // ...
   } else {
-    
     location.href = "index.html";
     console.log("User is signed out");
-    // ...
   }
 });
 
 $(document.body).on("click", "#log-out", function() {
-
   console.log("log out")
   firebase.auth().signOut()
   //   // Handle Errors here.
@@ -185,10 +197,7 @@ $(document.body).on("click", "#log-out", function() {
     
   //   alert(errorCode +"message :"+ errorMessage);
   // });
-
   location.href = "index.html"
-
-
 });
 
 var quotes = [
