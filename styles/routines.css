@@ -58,7 +58,7 @@ cursor: pointer;
 .routinecard{ 
     text-align: center; 
     position: relative;  
-    color: #222  
+    color: #222;
 }
 
 .launch-routine {
@@ -75,15 +75,26 @@ cursor: pointer;
 }
 
 .quote {
+    color: #ffffff;
     padding: 2rem;
     font-size: 1.7rem;
     font-style: italic;
 }
 
 .quote-author {
+    color: #ffffff;
     padding-right: 6rem;
     padding-bottom: 2rem; 
     font-size: 1.5rem;
     font-weight: bolder;
-    
+}
+
+.card-menu:hover{
+    cursor: pointer;
+}
+
+.card-option:hover{
+    cursor: pointer;
+    background-color: #0275d8;
+    color: #ffffff
 }
