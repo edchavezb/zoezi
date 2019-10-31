@@ -162,6 +162,10 @@ function resetRoutine(){
   rows = 0;
 }
 
+$(".close").on("click", function (){
+  $("#routine-editor").modal("hide");
+});
+
 function timeConverter(t) {
   var minutes = Math.floor(t / 60);
   var seconds = t - (minutes * 60);

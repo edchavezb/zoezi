@@ -53,7 +53,7 @@
               </div>
               <div class="row mt-2">
                 <div class="col-12 text-center">
-                  <h2 class="finish"></h2>
+                  <h3 class="finish"></h3>
                 </div>
               </div>
 
@@ -63,8 +63,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary pause-routine">Pause</button>
-        <button class="btn btn-secondary start-routine" data-routine="routine-id">Start</button>
+        <div class="cycle-pad"><span class="cycle-info ml-2"> <span class="cycle-title">Cycle: </span><span id="current-cycle"></span> / <span id="routine-cycles"></span></span></div>
+        <div class="button-pad">
+          <button class="btn btn-secondary pause-routine mr-2">Pause</button>
+          <button class="btn btn-secondary start-routine" data-routine="routine-id">Start</button>
+        </div>
       </div>
     </div>
 
