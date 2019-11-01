@@ -35,3 +35,28 @@ body {
 .user, #log-out {
     cursor: pointer;
 }
+
+.dropdown-menu{
+    position:absolute !important;
+    top: 100%;
+    left:-50%;
+    right:0;
+    z-index:1;
+  }
+
+#dropdown-home, #dropdown-routine{
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (min-width:576px) {
+    #dropdown-home, #dropdown-routine{
+        display: none
+    }
+}
+
+@media (max-width:576px) {
+    .nav-options{
+        display: none
+    }
+}
