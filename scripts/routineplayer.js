@@ -1,6 +1,6 @@
 var exerciseCount = 0;
 var chosenTimers = [10];
-var exerciseName = ["Get set!"];
+var exerciseNames = ["Get set!"];
 var exerciseGifs = {};
 var currentTimer = 0;
 var currentCycle = 0;
@@ -14,19 +14,19 @@ var running = false;
 var routineType = "";
 var routineCycles = 0;
 
-var announce = new Audio("sounds/next_exercise.mp3");
+var exerciseAnnounce = new Audio("sounds/next_exercise.mp3");
+var restAnnounce = new Audio("sounds/rest.mp3");
 var changeWhistle = new Audio("sounds/whistle_change.mp3");
 var finalSound = new Audio("sounds/success.mp3");
 var getReady = new Audio("sounds/get_ready.mp3");
+var cycleChange = new Audio("sounds/cycle.mp3");
 
 function routineStart(){
   $(".global").html(timeConverter(globalTime));
   global = setInterval(countUp, 1000);
   currentCycle = 1;
-  $(".cycle-info").show();
   $("#current-cycle").html(currentCycle);
-  $("#routine-cycles").html(routineCycles);
-  startExercise();
+  switchExercise();
   getGifs();
 }
 
@@ -34,21 +34,31 @@ function routineStart(){
 function countUp(){
   globalTime++;
   $(".global").html(timeConverter(globalTime));
-  if (timerTime === 6){
-    announce.play();
+  if (timerTime === 8 && currentTimer + 1 < chosenTimers.length && currentTimer !== 0){
+    var nextExerciseName = exerciseNames[currentTimer + 1]
+    if(nextExerciseName==="Rest"){
+      restAnnounce.play();
+    }
+    else{
+      exerciseAnnounce.play();
+    }
   };
   if (timerTime === 1){
+    chosenTimers[0] = 30;
     currentTimer++;
     clearInterval(exerciseTimer);
-    startExercise();
+    switchExercise();
     console.log("Switch");
-    changeWhistle.play();
+    if(currentTimer + 1 !== chosenTimers.length + 1){
+      changeWhistle.play();
+    }
   };
   if (currentTimer >= chosenTimers.length && currentCycle === routineCycles){
     console.log("Finished")
-    currentExercise = "Victory";
-    $(".finish").html("Finished!");
-    $(".time-left").html("0");
+    currentExercise = "Finished!"
+    $(".exercise-name").text(currentExercise);
+    $(".next-div").hide()
+    $(".time-left").html("00");
     clearInterval(exerciseTimer);
     clearInterval(global);
     finalSound.play();
@@ -58,8 +68,8 @@ function countUp(){
     $("#current-cycle").html(currentCycle);
     currentTimer = 0;
     clearInterval(exerciseTimer);
-    startExercise();
-    finalSound.play();
+    switchExercise();
+    cycleChange.play();
   }
 };
 
@@ -69,24 +79,30 @@ function countDown() {
   $(".time-left").html(timerTime);
 };
 
-function startExercise(){
+function switchExercise(){
+  var nextExerciseName = currentTimer + 1 < chosenTimers.length ? exerciseNames[currentTimer + 1] : "Finish";
   timerTime = chosenTimers[currentTimer];
-  currentExercise = exerciseName[currentTimer];
+  currentExercise = exerciseNames[currentTimer];
   currentGif = exerciseGifs[currentTimer];
   console.log(currentExercise);
   $(".time-left").html(timerTime);
+  $("#exercise-number").html(currentTimer);
   $(".exercise-name").text(currentExercise);
+  $(".next-exercise-name").text(nextExerciseName)
+  $(".global").html(timeConverter(globalTime));
   $(".z-image").attr("src", currentGif)
-  exerciseTimer = setInterval(countDown, 1000);
+  if (running == true){
+    exerciseTimer = setInterval(countDown, 1000);
+  }
 };
 
 $(document.body).on("click", ".launch-routine", function() {
   $(".pause-routine").hide();
-  $(".cycle-info").hide();
+  $(".next-div").hide()
   $(".start-routine").text("Start");
   $(".start-routine").attr("data-routine", $(this).closest(".routinecard").attr("data"));
   $("#routine-player").modal("show");
-  exerciseName = ["Get set!"];
+  exerciseNames = ["Get set!"];
   running = false;
   currentTimer = 0;
   timerTime = chosenTimers[currentTimer];
@@ -104,15 +120,20 @@ $(document.body).on("click", ".launch-routine", function() {
   exerciseCount = routineData[routineSelect].exercises.length
   routineType = routineData[routineSelect].type
   routineCycles = routineData[routineSelect].cycles
+  $("#current-cycle").html(currentCycle);
+  $("#routine-cycles").html(routineCycles);
+  $("#exercise-number").html(currentTimer);
+  $("#total-exercises").html(exerciseCount);
   for (var i = 1; i<=exerciseCount; i++){
     chosenTimers[i] = routineData[routineSelect].exercises[i-1].length;
-    exerciseName[i] = routineData[routineSelect].exercises[i-1].name;
+    exerciseNames[i] = routineData[routineSelect].exercises[i-1].name;
   }
 });
 
 $(document.body).on("click", ".start-routine", function() {
   getReady.play();
   $(".pause-routine").show();
+  $(".next-div").show()
   $(".start-routine").text("Re-Start");
   $(".finish").text("");
   running = true;
@@ -126,6 +147,7 @@ $(document.body).on("click", ".start-routine", function() {
 
 $(".close").on("click", function (){
   currentTimer = 0;
+  currentCycle = 0;
   timerTime = chosenTimers[currentTimer]
   globalTime = 0;
   clearInterval(exerciseTimer);
@@ -134,7 +156,7 @@ $(".close").on("click", function (){
 });
 
 $(document.body).on("click", ".pause-routine", function() {
-  if(running == true){
+  if(running === true){
     $(".pause-routine").text("Resume");
     clearInterval(exerciseTimer);
     clearInterval(global);
@@ -148,9 +170,23 @@ $(document.body).on("click", ".pause-routine", function() {
   }
 });
 
+$(document.body).on("click", ".next-exercise", function() {
+  currentTimer++;
+  clearInterval(exerciseTimer);
+  switchExercise();
+  changeWhistle.play();
+});
+
+$(document.body).on("click", ".previous-exercise", function() {
+    currentTimer--;
+    clearInterval(exerciseTimer);
+    switchExercise();
+    changeWhistle.play();
+});
+
 function getGifs(){
-  for(var i = 0; i < exerciseName.length; i++){
-    queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseName[i] +"&limit=15&offset=5&rating=G&lang=en"
+  for(var i = 0; i < exerciseNames.length; i++){
+    queryURL = "https://api.giphy.com/v1/gifs/search?api_key=F9wmLY3JsMMhA2tALUQLQp8ED9AB4GcM&q="+ exerciseNames[i] +"&limit=15&offset=5&rating=G&lang=en"
     $.ajax({
       url: queryURL,
       method: "GET",

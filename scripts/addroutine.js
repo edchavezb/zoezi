@@ -33,6 +33,16 @@ var uRoutinesArr = [];
 var cycleTime;
 var totalTime;
 
+setTimeout(userLoad, 1000)
+
+function userLoad() {
+	console.log(firebase.auth().currentUser)
+	var user = firebase.auth().currentUser.uid;
+	database.ref("Users/" + user + "/userInfo/dbname").on("value", function(snapshot){
+		$(".user").text(JSON.parse(snapshot.val()));
+	});
+}
+
 function calculateTotal() {
   cycleTime = 0;
   $(".new-exercise").each(function(){

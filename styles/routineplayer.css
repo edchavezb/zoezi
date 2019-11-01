@@ -1,0 +1,217 @@
+.modal-content {
+    background-color: #E9ECEF;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    top: -150px !important;
+}
+
+.modal-footer{
+    justify-content: initial !important;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.cycle-pad{
+    width: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.button-pad{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+.player-row{
+    height: 350px
+}
+
+.z-image{
+    width: 80%;
+    max-height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+}
+
+.gif-display{
+    height: 100%;;
+}
+
+.big-display{
+    margin: auto;
+    width: 300px;
+    height: 200px;
+}
+
+.play-control-column{
+    width: 12%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.play-control-column.right{
+    margin-left: 4%
+}
+
+.play-control-column.left{
+    margin-right: 4%
+}
+
+.play-control{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    cursor: pointer;
+    color: #4b4b4b
+}
+
+.next-exercise{
+    left: -20%
+}
+
+.time-left{
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    vertical-align: middle;
+    display: inline-block;
+    background: rgb(0, 134, 187);
+    color: #ffffff;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.editor-title{
+    margin: 0px !important;
+}
+
+@media (max-width:1200px) {
+    .modal-content {
+        width: 80%;
+        top: -50px !important;
+    }
+    .big-display{
+        width: 360px;
+        height: 240px;
+    }
+    .time-left{
+        width: 240px;
+        height: 240px;
+        line-height: 240px;
+        font-size: 6rem;
+    }
+    .play-control{
+        font-size: 3.5rem;
+    }
+    .player-row{
+        height: 400px
+    }
+}
+
+@media (max-width:992px) {
+    .player-container, .modal-body{
+        padding: 0px;
+    }
+    .big-display{
+        width: 300px;
+        height: 200px;
+    }
+    .time-left{
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        font-size: 5rem;
+    }
+    .play-control{
+        font-size: 3rem;
+    }
+    .player-row{
+        height: 350px
+    }
+}
+
+@media (max-width:768px) {
+    .big-display{
+        width: 240px;
+        height: 160px;
+    }
+    .time-left{
+        width: 160px;
+        height: 160px;
+        line-height: 160px;
+        font-size: 4rem;
+    }
+    .play-control{
+        font-size: 2rem;
+    }
+    .player-row{
+        height: 300px
+    }
+    .next-exercise{
+        left: -10%
+    }
+}
+
+@media (max-width:660px){
+    .modal-content {
+        width: 95%;
+        top: 0px !important;
+    }
+}
+
+@media (max-width:576px) {
+    .gif-display{
+        display: none;
+    }
+    .cycle-pad{
+        width: 40%;
+        font-size: 1.2rem;
+    }
+    .exercise-letter{
+        margin-left: .5em;
+    }
+    .button-pad{
+        width: 60%;
+    }
+    .big-display{
+        width: 300px;
+        height: 200px;
+    }
+    .time-left{
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        font-size: 5rem;
+    }
+    .play-control{
+        font-size: 3rem;
+    }
+    .player-row{
+        height: 350px
+    }
+    .next-exercise{
+        left: -15%
+    }
+}

@@ -59,3 +59,34 @@
     float: right;
     cursor: pointer;
 }
+
+@media (max-width:768px) {
+    .controls{
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .name-label{
+        width: 60%;
+        text-overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .sec-title{
+        display: none
+    }
+}
+
+@media (max-width:576px) {
+    .controls{
+        width: 50%;
+        margin-left: -5%
+    }
+    .name-label{
+        width: 50%;
+        margin-right: -5%
+    }
+    .editor-content, .editor-container{
+        padding: 0px !important;
+    }
+}

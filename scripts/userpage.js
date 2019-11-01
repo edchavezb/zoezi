@@ -15,27 +15,14 @@ var routineData = [];
 var routineTypeArr =  [];
 var disp = ".MyRoutines"; 
 
-// queryURL = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//     }).then(function(response) {
-//       console.log(response)
-//         $(".quote").html(response.content);
-//         $(".quote-author").html("-"+response.title);
-// });
-
 $(".fa-spinner").show();
 setTimeout(dataLoad, 1000)
 
 function dataLoad(){
   var user = firebase.auth().currentUser.uid;
   database.ref("Users/" + user + "/userInfo/dbname").on("value", function(snapshot){
-
-    $(".user").text(JSON.parse(snapshot.val()));
-    $(".user-name").text(JSON.parse(snapshot.val()));
-
-  });
+		$(".user").text(JSON.parse(snapshot.val()));
+	});
   database.ref("Users/" + user + "/userRoutines").on("value", function(snapshot) {
     myRoutines = JSON.parse(snapshot.val());
     fetchRoutines();
@@ -79,7 +66,7 @@ function createCards(param){
     };
 
     newRoutine.find(".routinecard-title").text(routineData[routineArray[i]].name);
-    newRoutine.find("#type").text("Type: " + routineData[routineArray[i]].type);
+    newRoutine.find("#type").text("Type: " + routineData[routineArray[i]].type.charAt(0).toUpperCase() + routineData[routineArray[i]].type.substring(1));
     newRoutine.find("#duration").text("Duration: " + timeConverter(parseInt(routineData[myRoutines[i]].duration)));
     $(".my-routines").append(newRoutine);
   }
@@ -90,10 +77,16 @@ function createCards(param){
       0:{
         items:1
       },
-      600:{
+      450:{
+        items:2
+      },
+      768:{
         items:3
       },
-      1000:{
+      992:{
+        items:4
+      },
+      1200:{
         items:5
       }
     }

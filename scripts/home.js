@@ -28,6 +28,7 @@ $(document.body).on("click", "#sign-up", function(e) {
 
 
 });
+
 $(document.body).on("click", "#log-in", function(e) {
   
   e.preventDefault()
@@ -45,8 +46,6 @@ $(document.body).on("click", "#log-in", function(e) {
     
   $(".alert-message").text(errorMessage);
   });
-  
-
 
 });
 
