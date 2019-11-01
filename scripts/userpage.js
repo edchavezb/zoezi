@@ -175,3 +175,41 @@ $(document.body).on("click", ".edit-routine", function() {
   $("#routine-editor").modal("show");
   calculateTotal();
 });
+
+var quotes = [
+  {
+    content: "With the new day comes new strength and new thoughts.",
+    author: " Eleanor Roosevelt"
+  },
+  {
+    content: "It does not matter how slowly you go as long as you do not stop.",
+    author: " Confucius"
+  },
+  {
+    content: "Change your life today. Don't gamble on the future, act now, without delay.",
+    author: " Simone de Beauvoir"
+  },
+  {
+    content: "The past cannot be changed. The future is yet in your power.",
+    author: "Unknown"
+  },
+  {
+    content: "Failure will never overtake me if my determination to succeed is strong enough.",
+    author: " Og Mandino"
+  },
+  {
+    content: "Only I can change my life. No one can do it for me.",
+    author: " Carol Burnett"
+  },
+  {
+    content: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times, I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
+    author: " Michael Jordan"
+  },
+  {
+    content: "Some people want it to happen, some wish it would happen, others make it happen.",
+    author: " Michael Jordan"
+  },
+];
+var random = Math.floor(Math.random()*quotes.length);
+$(".quote").html("''"+quotes[random].content+"''");
+$(".quote-author").html("-"+ quotes[random].author);

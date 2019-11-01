@@ -37,7 +37,11 @@
     display: inline;
 }
 
-.name-label, .exercise-name {
+.name-label{
+    text-align: center;
+}
+
+.name-label, .exercise-name-input {
     flex-grow: 1;
 }
 
@@ -68,12 +72,15 @@
     }
     .name-label{
         width: 60%;
-        text-overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
     }
     .sec-title{
         display: none
+    }
+    .name-label{
+        text-align: initial;
     }
 }
 
@@ -84,7 +91,8 @@
     }
     .name-label{
         width: 50%;
-        margin-right: -5%
+        margin-right: -5%;
+        padding-right: 8%
     }
     .editor-content, .editor-container{
         padding: 0px !important;

@@ -71,7 +71,7 @@ cursor: pointer;
 }
 
 .play-control-column.right{
-    margin-left: 4%
+    margin-left: 4%;
 }
 
 .play-control-column.left{
@@ -84,11 +84,21 @@ cursor: pointer;
     transform: translateY(-50%);
     font-size: 3rem;
     cursor: pointer;
-    color: #4b4b4b
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+}
+
+.previous-exercise {
+    border-top: 15px solid transparent;
+    border-right: 30px solid #4b4b4b;
+    border-bottom: 15px solid transparent;
 }
 
 .next-exercise{
-    left: -20%
+    border-top: 15px solid transparent;
+    border-left: 30px solid #4b4b4b;
+    border-bottom: 15px solid transparent;
 }
 
 .time-left{
@@ -169,8 +179,17 @@ cursor: pointer;
     .player-row{
         height: 300px
     }
+
+    .previous-exercise {
+        border-top: 10px solid transparent;
+        border-right: 20px solid #4b4b4b;
+        border-bottom: 10px solid transparent;
+    }
+    
     .next-exercise{
-        left: -10%
+        border-top: 10px solid transparent;
+        border-left: 20px solid #4b4b4b;
+        border-bottom: 10px solid transparent;
     }
 }
 
@@ -211,7 +230,14 @@ cursor: pointer;
     .player-row{
         height: 350px
     }
+    .previous-exercise {
+        border-top: 15px solid transparent;
+        border-right: 30px solid #4b4b4b;
+        border-bottom: 15px solid transparent;
+    }
     .next-exercise{
-        left: -15%
+        border-top: 15px solid transparent;
+        border-left: 30px solid #4b4b4b;
+        border-bottom: 15px solid transparent;
     }
 }

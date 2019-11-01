@@ -42,14 +42,13 @@
                   <h3 class="exercise-name text-center">Ready!</h3>
                   <div class="big-display mt-3">
                     <div class="play-control-column left">
-                      <div class="play-control previous-exercise">&#11207;</div>
-                    </div><div class="time-left rounded-circle text-center">   
+                      <div class="play-control previous-exercise"></div>
+                    </div><div class="time-left rounded-circle text-center">
                     </div><div class="play-control-column right">
-                      <div class="play-control next-exercise">&#11208;</div>
+                      <div class="play-control next-exercise"></div>
                     </div>
                   </div>
                 </div>
-
                 <div class="col-12 mt-3 text-center">
                     <h6 class="next-div">Next: <span class="next-exercise-name"></span></h4>
                     <h4>Total: <span class="global"></span></h4>
@@ -65,7 +64,7 @@
       <div class="modal-footer">
         <div class="cycle-pad"><span class="cycle-info ml-2"> <span class="cycle-letter">C:</span><span id="current-cycle"></span>/<span id="routine-cycles"></span><span class="exercise-letter">  E:</span><span id="exercise-number"></span>/<span id="total-exercises"></span> </span></div>
         <div class="button-pad">
-          <button class="btn btn-secondary pause-routine mr-2">Pause</button>
+          <button class="btn btn-secondary pause pause-button mr-2">Pause</button>
           <button class="btn btn-secondary start-routine" data-routine="routine-id">Start</button>
         </div>
       </div>
@@ -256,7 +255,7 @@
               </div>
       
               <div id="exercise-template" class="d-none row">
-                <div class="name-label text-center">Template</div>
+                <div class="name-label">Template</div>
       
                 <div class="controls">
       
@@ -275,14 +274,14 @@
                   <span class="cycle-time px-md-3"> Cycle: </span>
                   <span class="total-time pl-3 pr-md-5"> Total: </span>
                 </div>
-              </div><br>
+              </div>
       
               <div class="row ml-0 ml-md-4">
                 <label for="name-input">Name of exercise:</label>
               </div>
               <div class="row add-form ml-md-3">
       
-                <div class="form-group exercise-name px-2">
+                <div class="form-group exercise-name-input px-2">
                   <input type="text" class="form-control" id="name-input">
                 </div>
       
@@ -320,8 +319,8 @@
         <span class="dropdown-toggle user text-white" data-toggle="dropdown">User</span>
         <ul class="dropdown-menu mt-2 px-3 py-2">
           <a id="dropdown-home" href="routines.html"><li>My profile</li></a>
-          <a id="dropdown-routine" href="addroutine.html"><li>Create routine</li></a>
-          <li id="log-out">Log out</li>
+          <a id="dropdown-routine" href="addroutine.html"><li class="mt-1">Create routine</li></a>
+          <li id="log-out" class="mt-1">Log out</li>
         </ul>
       </div>
     </div>
