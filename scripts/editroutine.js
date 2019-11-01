@@ -1,5 +1,3 @@
-$(".time-sum-display").hide();
-
 var database = firebase.database();
 var rows = 0;
 var schedule = [];
