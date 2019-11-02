@@ -46,6 +46,7 @@ function createCards(param){
   var routineArray = param ? param : myRoutines;
   console.log(routineArray)
   $(".fa-spinner").hide();
+  $(".my-routines-title").html("My Routines");
   for(var i = 0; i < routineArray.length; i++){
 
     var newRoutine = $("<div>");

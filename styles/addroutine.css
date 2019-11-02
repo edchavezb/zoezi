@@ -1,12 +1,12 @@
 .form-control-inline {
     min-width: 0;
     width: auto;
-    display: inline;
+    display: inline-block;
 }
 
 .cycles {
     width: 50px;
-    display: inline;
+    display: inline-block;
 }
 
 .zoebtn{
@@ -21,7 +21,7 @@
 
 .seconds{
     width: 60px;
-    display: inline;
+    display: inline-block;
 }
 
 #template, .new-exercise, .add-form {
@@ -34,7 +34,7 @@
 
 .add-buttons {
     width: 250px;
-    display: inline;
+    display: inline-block;
 }
 
 .name-label{

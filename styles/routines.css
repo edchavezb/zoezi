@@ -57,3 +57,9 @@
     background-color: #0275d8;
     color: #ffffff
 }
+
+@media (max-width: 576px) {
+    .welcome-title{
+        text-align: center;
+    }
+}
