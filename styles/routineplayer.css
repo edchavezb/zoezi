@@ -111,6 +111,7 @@ cursor: pointer;
     color: #ffffff;
     font-size: 5rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .editor-title{
@@ -120,7 +121,7 @@ cursor: pointer;
 @media (max-width:1200px) {
     .modal-content {
         width: 80%;
-        top: -50px !important;
+        top: -100px !important;
     }
     .big-display{
         width: 360px;
@@ -196,7 +197,7 @@ cursor: pointer;
 @media (max-width:660px){
     .modal-content {
         width: 95%;
-        top: 0px !important;
+        top: -50px !important;
     }
 }
 

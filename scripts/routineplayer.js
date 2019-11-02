@@ -67,13 +67,14 @@ function countUp(){
   }
 };
 
-//This function only takes care of counting down depending on the length of the current exercise
+//This function takes care of counting down depending on the duration of the current exercise
 function countDown() {
   timerTime--;
   $(".time-left").html(timerTime);
 };
 
 function switchExercise(){
+  console.log(chosenTimers)
   var nextExerciseName = currentTimer + 1 < chosenTimers.length ? exerciseNames[currentTimer + 1] : "Finish";
   timerTime = chosenTimers[currentTimer];
   currentExercise = exerciseNames[currentTimer];
@@ -144,10 +145,11 @@ function routineReset() {
 
 function routineDataLoad() {
   exerciseNames = ["Get set!"];
+  chosenTimers = [10]
   exerciseCount = routineData[routineSelect].exercises.length
   routineCycles = routineData[routineSelect].cycles
   for (var i = 1; i<=exerciseCount; i++){
-    chosenTimers[i] = routineData[routineSelect].exercises[i-1].length;
+    chosenTimers[i] = parseInt(routineData[routineSelect].exercises[i-1].length);
     exerciseNames[i] = routineData[routineSelect].exercises[i-1].name;
   }
   $(".routine-title").text(routineData[routineSelect].name);
