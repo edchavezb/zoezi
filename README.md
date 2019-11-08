@@ -47,6 +47,6 @@ Click [here](https://edgar821.github.io/zoezi/) to launch a deployed version of 
 
 ## Authors
 
-* **Edgar Chávez** - Routine player and editor functionality using JS and jQuery. Firebase real-time database.
+* **[Edgar Chávez](https://github.com/edgar821)** - Routine player and editor functionality using JS and jQuery. Firebase real-time database.
 * **[Fran Cuesta](https://github.com/IscoCuesta)** - Firebase authentication, Giphy API, routine player.
 * **[Isabela Rabasa](https://github.com/isarabasa)** - User experience, homepage and UI design, routine editor.
