@@ -315,7 +315,7 @@
     </div>
 
     <div class="navbar-nav ml-auto">
-      <div class="dropdown">
+      <div class="dropdown user-menu">
         <span class="dropdown-toggle user text-white" data-toggle="dropdown">User</span>
         <ul class="dropdown-menu mt-2 px-3 py-2">
           <a id="dropdown-home" href="routines.html"><li>My profile</li></a>
@@ -327,49 +327,35 @@
 
   </nav>
 
-  <div class="container">
-    <div class="card ui mt-3 mb-3">
-      <div class="card-header ui"><h4 class="welcome-title">Welcome, <span class="user">User</span></h4></div>
-
-      <div class="card-body ui px-5">
-        <div class="title">
-          <h3 class="text-center my-routines-title"><i class="fas fa-spinner fa-spin ml-3"></i> </h3>
-        </div>
-        <div class="owl-carousel owl-theme mt-3 my-routines"></div>
-        <div class="title">
-          <h3 class="shared-title"></h3>
-        </div>
-        <div class="owl-carousel owl-theme mt-3 recommended"></div>
-      </div>
-
-
+  <div class="container" id="routines-container">
+    <div class="title">
+      <h3 class="my-routines-title"><i class="fas fa-spinner fa-spin ml-3"></i> </h3>
     </div>
+    <div class="owl-carousel owl-theme mt-3 my-routines"></div>
+    <div class="title">
+      <h3 class="shared-title"></h3>
+    </div>
+    <div class="owl-carousel owl-theme mt-3 recommended"></div>
     <div class="quote"></div>
     <div class="quote-author text-right"></div>
   </div>
 
 
-  <div class="template card routinecard text-white bg-info mb-3" style="max-width: 18rem;">
-    <div class="card-header px-2">
-      <div class="row no-gutters">
-        <div class="col-1"></div>
-        <div class="col-10 title-column"><i class="routinecard-title">Routine name</i></div>
-        <div class="col-1">
-          <div class="dropdown">
-            <i class="fas fa-ellipsis-v card-menu" data-toggle="dropdown"></i>
-            <ul class="dropdown-menu dropdown-menu-right mt-2">
-              <li class="card-option delete-routine px-2 py-1">Delete routine</li>
-              <li class="card-option edit-routine px-2 py-1">Edit routine</li>
-            </ul>
-          </div>
-        </div>
+  <div class="template routinecard text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-top px-2">
+      <div class="routinecard-title">Routine name</div>
+      <div class="dropdown">
+        <i class="fas fa-ellipsis-v card-menu" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right mt-2">
+          <li class="card-option delete-routine px-2 py-1">Delete routine</li>
+          <li class="card-option edit-routine px-2 py-1">Edit routine</li>
+        </ul>
       </div>
     </div>
-    <div class="card-body py-2">
-      <div id="type">Type:</div>
-      <div id="duration">Duration:</div>
-      <div class="launch-routine mt-2" data="routine-id">
-        Go <i class="fa fa-angle-double-right"></i>
+    <div class="card-bottom py-2">
+      <div class="clock"> &#128337;<span class="duration"></span></div>
+      <div class="launch-container">
+        <div class="launch-routine" data="routine-id" > Go <i class="fa fa-angle-double-right"></i></div>
       </div>
     </div>
   </div>            

@@ -2,27 +2,92 @@
     margin: 0px
 }
 
+#routines-container {
+    margin-top: 50px;
+}
+
 .routinecard{ 
     text-align: center; 
     position: relative;  
-    color: #222;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 250px;
 }
 
-.title-column{
-    height: 24px;
+.yoga {
+    background-image: url(../images/yoga.jpeg);
+}
+
+.strength {
+    background-image: url(../images/strength.jpg);
+}
+
+.cardio {
+    background-image: url(../images/cardio.jpeg);
+}
+
+.card-top {
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.card-top::before {
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dropdown {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 2;
 }
 
 .routinecard-title{
     display: inline-block;
     width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    word-wrap: normal;
+    z-index: 2;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card-bottom {
+    display: flex;
+    color: #ffffff;
+    background-color: #0275d8;
+}
+
+.clock {
+    padding-left: 10px;
+}
+
+.launch-container {
+    color: #ffffff;
+    cursor: pointer;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .launch-routine {
-    color: black;
-    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0px 5px;
+    text-align: center;
+    border-radius: 2px;
 }
 
 .launch-routine:hover {
@@ -34,14 +99,14 @@
 }
 
 .quote {
-    color: #ffffff;
+    color: #3d3d3d;
     padding: 2rem;
     font-size: 1.7rem;
     font-style: italic;
 }
 
 .quote-author {
-    color: #ffffff;
+    color: #3d3d3d;
     padding-right: 6rem;
     padding-bottom: 2rem; 
     font-size: 1.5rem;

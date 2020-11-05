@@ -52,23 +52,29 @@ function createCards(param){
     var newRoutine = $("<div>");
     newRoutine.attr("data", routineArray[i]);
     newRoutine.html($(".template").html());
-    newRoutine.addClass("card routinecard text-white");
+    newRoutine.addClass("routinecard");
+    let cardTop = newRoutine.find(".card-top");
     switch(routineData[routineArray[i]].type){
       case "yoga":
-        newRoutine.addClass("bg-dark");
+        cardTop.addClass("yoga");
+        break;
       case "strength":
-        newRoutine.addClass("bg-danger");
+        cardTop.addClass("strength");
+        break;
       case "cardio":
-        newRoutine.addClass("bg-warning");
+        cardTop.addClass("cardio");
+        break;
       case "fun":
-        newRoutine.addClass("bg-success");
+        cardTop.addClass("fun");
+        break;
       default:
-        newRoutine.addClass("bg-secondary");
+        cardTop.addClass("fun");
+        break;
     };
 
     newRoutine.find(".routinecard-title").text(routineData[routineArray[i]].name);
     newRoutine.find("#type").text("Type: " + routineData[routineArray[i]].type.charAt(0).toUpperCase() + routineData[routineArray[i]].type.substring(1));
-    newRoutine.find("#duration").text("Duration: " + timeConverter(parseInt(routineData[myRoutines[i]].duration)));
+    newRoutine.find(".duration").text(timeConverter(parseInt(routineData[myRoutines[i]].duration)));
     $(".my-routines").append(newRoutine);
   }
   $(".my-routines").owlCarousel({
@@ -76,9 +82,11 @@ function createCards(param){
     margin:10,
     responsive:{
       0:{
-        items:1
+        margin: 10,
+        items: 1,
+        stagePadding: 30
       },
-      450:{
+      400:{
         items:2
       },
       768:{

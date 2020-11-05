@@ -13,12 +13,16 @@
     background: #F8F9FA;
 }
 
+.navbar {
+    position: relative !important;
+}
+
 .navbar-brand{
     font-weight: bold;
 }
 
 body {
-    background: rgb(1, 52, 107);
+    background: #F0F4F6;
     font-family: sans-serif;
 }
 
@@ -34,6 +38,12 @@ body {
 
 .user, #log-out {
     cursor: pointer;
+}
+
+.user-menu {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .dropdown-menu{
