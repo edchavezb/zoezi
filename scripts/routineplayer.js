@@ -157,7 +157,7 @@ function routineDataLoad() {
   $("#total-exercises").html(exerciseCount);
 };
 
-$(document.body).on("click", ".launch-routine", function() {
+$(document.body).on("mousedown", ".launch-routine", function() {
   routineSelect = $(this).closest(".routinecard").attr("data");
   console.log(routineSelect);
   $("#routine-player").modal("show");
