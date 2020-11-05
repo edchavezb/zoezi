@@ -64,11 +64,38 @@ function createCards(param){
       case "cardio":
         cardTop.addClass("cardio");
         break;
-      case "fun":
-        cardTop.addClass("fun");
+      case "bodyweight":
+        cardTop.addClass("bodyweight");
+        break;
+      case "combat":
+        cardTop.addClass("dance");
+        break;
+      case "pilates":
+        cardTop.addClass("dance");
+        break;
+      case "cycling":
+        cardTop.addClass("cycling");
+        break;
+      case "dance":
+        cardTop.addClass("dance");
+        break;
+      case "weightlifting":
+        cardTop.addClass("weightlifting");
+        break;
+      case "crossfit":
+        cardTop.addClass("crossfit");
+        break;
+      case "hiit":
+        cardTop.addClass("hiit");
+        break;
+      case "stretching":
+        cardTop.addClass("stretching");
+        break;
+      case "wellness":
+        cardTop.addClass("wellness");
         break;
       default:
-        cardTop.addClass("fun");
+        cardTop.addClass("strength");
         break;
     };
 

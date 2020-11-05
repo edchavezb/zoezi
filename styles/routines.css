@@ -14,16 +14,56 @@
     max-width: 250px;
 }
 
-.yoga {
-    background-image: url(../images/yoga.jpeg);
-}
-
 .strength {
     background-image: url(../images/strength.jpg);
 }
 
+.bodyweight {
+    background-image: url(../images/bodyweight.jpg);
+}
+
+.yoga {
+    background-image: url(../images/yoga.jpeg);
+}
+
 .cardio {
     background-image: url(../images/cardio.jpeg);
+}
+
+.combat {
+    background-image: url(../images/combat.jpg);
+}
+
+.crossfit {
+    background-image: url(../images/crossfit.jpg);
+}
+
+.cycling {
+    background-image: url(../images/cycling.jpg);
+}
+
+.hiit {
+    background-image: url(../images/hiit.jpg);
+}
+
+.weightlifting {
+    background-image: url(../images/weightlifting.jpg);
+}
+
+.pilates {
+    background-image: url(../images/pilates.jpg);
+}
+
+.dance {
+    background-image: url(../images/dance.jpg);
+}
+
+.stretching {
+    background-image: url(../images/stretching.jpg);
+}
+
+.wellness {
+    background-image: url(../images/wellness.jpg);
 }
 
 .card-top {
