@@ -27,7 +27,7 @@
 }
 
 .cardio {
-    background-image: url(../images/cardio.jpeg);
+    background-image: url(../images/cardio.jpg);
 }
 
 .combat {
@@ -106,12 +106,53 @@
 
 .card-bottom {
     display: flex;
+    align-items: center;
     color: #ffffff;
     background-color: #0275d8;
 }
 
+.icon-circle {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.target-icon {
+    width: 16px !important;
+    height: 16px;
+}
+
+.arms {
+    background-color: crimson;
+}
+
+.legs {
+    background-color: green;
+}
+
+.glutes {
+    background-color: rebeccapurple;
+}
+
+.back {
+    background-color: rgb(7, 189, 189);
+}
+
+.abs {
+    background-color: orange;
+}
+
+.mixed {
+    background-color: gold;
+}
+
 .clock {
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .launch-container {
@@ -164,7 +205,8 @@
 }
 
 @media (max-width: 576px) {
-    .welcome-title{
+    .my-routines-title {
         text-align: center;
+        margin-bottom: 30px;
     }
 }

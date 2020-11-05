@@ -54,50 +54,12 @@ function createCards(param){
     newRoutine.html($(".template").html());
     newRoutine.addClass("routinecard");
     let cardTop = newRoutine.find(".card-top");
-    switch(routineData[routineArray[i]].type){
-      case "yoga":
-        cardTop.addClass("yoga");
-        break;
-      case "strength":
-        cardTop.addClass("strength");
-        break;
-      case "cardio":
-        cardTop.addClass("cardio");
-        break;
-      case "bodyweight":
-        cardTop.addClass("bodyweight");
-        break;
-      case "combat":
-        cardTop.addClass("dance");
-        break;
-      case "pilates":
-        cardTop.addClass("dance");
-        break;
-      case "cycling":
-        cardTop.addClass("cycling");
-        break;
-      case "dance":
-        cardTop.addClass("dance");
-        break;
-      case "weightlifting":
-        cardTop.addClass("weightlifting");
-        break;
-      case "crossfit":
-        cardTop.addClass("crossfit");
-        break;
-      case "hiit":
-        cardTop.addClass("hiit");
-        break;
-      case "stretching":
-        cardTop.addClass("stretching");
-        break;
-      case "wellness":
-        cardTop.addClass("wellness");
-        break;
-      default:
-        cardTop.addClass("strength");
-        break;
-    };
+    let icon = newRoutine.find(".icon-circle");
+    let target = routineData[routineArray[i]].target;
+    let type = routineData[routineArray[i]].type;
+    icon.addClass(target);
+    cardTop.addClass(type);
+    icon.find(".target-icon").attr("src", `./images/icons/${target}.svg`);
 
     newRoutine.find(".routinecard-title").text(routineData[routineArray[i]].name);
     newRoutine.find("#type").text("Type: " + routineData[routineArray[i]].type.charAt(0).toUpperCase() + routineData[routineArray[i]].type.substring(1));
