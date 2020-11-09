@@ -42,7 +42,7 @@ Each routine has a menu that allows you to delete, edit or share your routine. V
 
 ## Demo
 
-Click [here](https://edgar821.github.io/zoezi/) to launch a deployed version of the app.
+Click [here](https://edchavezb.github.io/zoezi/) to launch a deployed version of the app.
 
 
 ## Authors
